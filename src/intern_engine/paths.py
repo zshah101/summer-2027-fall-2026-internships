@@ -20,3 +20,5 @@ CSV_PATH = os.path.join(DATA_DIR, "internships.csv")         # downloadable trac
 STATS_PATH = os.path.join(DATA_DIR, "stats.json")            # last-run metrics
 
 README_PATH = os.path.join(ROOT, "README.md")
+DOCS_DIR = os.path.join(ROOT, "docs")
+DASHBOARD_PATH = os.path.join(DOCS_DIR, "index.html")        # GitHub Pages dashboard

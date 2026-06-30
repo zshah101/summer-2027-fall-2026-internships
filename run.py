@@ -12,7 +12,13 @@ import sys
 # Make the package under src/ importable without installation.
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "src"))
 
-from intern_engine import discover, harvester, pipeline, readme  # noqa: E402
+from intern_engine import (  # noqa: E402
+    dashboard,
+    discover,
+    harvester,
+    pipeline,
+    readme,
+)
 
 
 def cmd_harvest() -> None:
@@ -42,6 +48,7 @@ def cmd_update() -> None:
         sys.exit(1)
     stats, store_data = pipeline.run_update()
     summary = readme.generate(store_data)
+    dashboard.generate(store_data, stats)
     print("Update complete:")
     for k, v in stats.items():
         print(f"  {k:<20} {v}")
