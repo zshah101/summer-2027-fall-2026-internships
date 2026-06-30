@@ -2,7 +2,7 @@
 
 A self-updating engine that tracks tech internships so you don't have to. Instead of refreshing a dozen career pages by hand, it reads company hiring feeds directly and keeps one live list — newest roles on top, refreshed automatically throughout the day.
 
-**27 open roles · 1070 companies tracked · updated Jun 30, 2026 at 07:56 UTC**
+**27 open roles · 1070 companies tracked · updated Jun 30, 2026 at 11:15 UTC**
 
 ## What this is
 
