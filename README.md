@@ -18,7 +18,7 @@ This is an engine, not a hand-kept list. It polls company career feeds several t
 
 ## About
 
-I'm a US-based international student studying in the United States, so I built this for the search I'm doing myself. It's US-only for now. Use it to spot roles early and apply before they fill up — being first genuinely helps.
+I'm a US-based international student studying in the United States, so I built this for the search I'm doing myself. It's US-only for now. Use it to spot roles early and apply before they fill up - being first genuinely helps.
 
 ## Where this is going
 
@@ -26,7 +26,7 @@ I'm building this in the open and adding to it as it grows. Coming soon: **SMS/e
 
 ## How to use
 
-- Roles are grouped by cycle below — **newest posting on top, oldest at the bottom.**
+- Roles are grouped by cycle below - **newest posting on top, oldest at the bottom.**
 - The **Posted** column is the date the company published the role.
 - Track your applications with [`data/internships.csv`](data/internships.csv) (opens in Excel / Google Sheets).
 - Missing a company? Adding one takes a single line — see [CONTRIBUTING.md](CONTRIBUTING.md).
