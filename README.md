@@ -1,6 +1,6 @@
 # Summer 2027 Tech Internships
 
-HI Everyone. This is a self-updating engine that tracks tech internships so you don't have to. Instead of refreshing a dozen career pages by hand, it reads company hiring feeds directly and keeps one live list — newest roles on top, refreshed automatically throughout the day.
+HI Everyone. This is a self-updating engine that tracks tech internships so you don't have to. Instead of refreshing a dozen career pages by hand, it reads company hiring feeds directly and keeps one live list - newest roles on top, refreshed automatically throughout the day.
 
 **31 open roles · 1217 companies tracked · updated Jun 30, 2026 at 12:22 UTC**
 
