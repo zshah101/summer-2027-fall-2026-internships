@@ -85,6 +85,18 @@ company tokens and grow `data/companies.json` — we then poll those feeds direc
   "closed" for companies that fetched successfully.
 - **Stable ids** (`<source>:<slug>:<external_id>`) make dedup automatic.
 
+## Workday (enterprise tier) & the optional proxy
+
+Workday is per-tenant (each company has its own host + `site`) and bot-protected.
+Discovery extracts tenant/site pairs from public data, limited to a curated set of
+desirable tech/finance names. Failures are isolated per company.
+
+Workday blocks **datacenter/cloud IPs** more aggressively than home IPs, so the
+GitHub Actions runner may be refused for some tenants. To recover them, set a repo
+secret named **`WORKDAY_PROXY`** to a proxy URL (e.g. a cheap residential/rotating
+proxy: `http://user:pass@host:port`). The workflow passes it through, and only the
+Workday connector uses it. Unset = Workday runs direct (default).
+
 ## Running locally
 
 ```bash

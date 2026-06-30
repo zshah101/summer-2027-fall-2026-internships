@@ -44,26 +44,59 @@ _WD_RE = re.compile(
 # Workday hosts thousands of mostly non-tech enterprises, so we only keep the
 # tech / finance / fintech names students actually want (matched in the name).
 _WD_DESIRABLE = {
-    # software / cloud / dev
+    # software / cloud / dev / data / security
     "nvidia", "salesforce", "adobe", "servicenow", "workday", "autodesk",
     "intuit", "vmware", "cisco", "dell", "hewlett", "hpe", "sap", "oracle",
     "ibm", "atlassian", "splunk", "palo alto", "fortinet", "zscaler",
     "crowdstrike", "datadog", "snowflake", "twilio", "dropbox", "docusign",
     "zoom", "unity", "roblox", "electronic arts", "activision", "take-two",
-    "nutanix", "pure storage", "netapp", "arista", "juniper", "akamai",
-    "cloudflare", "hubspot", "zoominfo", "garmin", "dolby", "workiva",
+    "ubisoft", "nutanix", "pure storage", "netapp", "arista", "juniper",
+    "akamai", "cloudflare", "hubspot", "zoominfo", "garmin", "dolby", "workiva",
+    "smartsheet", "pegasystems", "appian", "uipath", "informatica", "teradata",
+    "cloudera", "commvault", "rubrik", "elastic", "gitlab", "hashicorp",
+    "confluent", "mongodb", "ringcentral", "nice ", "genesys", "freshworks",
+    "zendesk", "dynatrace", "new relic", "sumo logic", "qualtrics", "ptc",
+    "ansys", "trimble", "epam", "globant", "cognizant", "infosys", "wipro",
+    "accenture", "capgemini", "dxc", "thoughtworks", "logitech", "roku",
+    "sonos", "western digital", "seagate",
     # semiconductors that hire lots of SWE/ML interns
     "amd", "intel", "qualcomm", "marvell", "micron", "broadcom",
-    "analog devices", "texas instruments", "nxp", "microchip", "western digital",
-    # finance / fintech / quant
+    "analog devices", "texas instruments", "nxp", "microchip", "synopsys",
+    "cadence", "keysight", "teradyne", "globalfoundries", "skyworks", "qorvo",
+    "onsemi", "on semiconductor", "lam research", "kla", "applied materials",
+    "asml", "wolfspeed", "lattice semi",
+    # finance / fintech / banks
     "paypal", "visa", "mastercard", "capital one", "american express",
     "jpmorgan", "jp morgan", "goldman", "morgan stanley", "citi", "wells fargo",
     "bank of america", "blackrock", "fidelity", "charles schwab", "state street",
     "bny", "nasdaq", "s&p global", "bloomberg", "fiserv", "global payments",
-    "sofi", "robinhood", "coinbase", "block", "discover financial",
+    "sofi", "robinhood", "coinbase", "block", "discover financial", "ally",
+    "synchrony", "northern trust", "pnc", "u.s. bank", "us bank", "truist",
+    "deutsche bank", "barclays", "ubs", "hsbc", "rbc", "td bank", "scotiabank",
+    "bmo", "citizens", "fifth third", "keybank", "regions", "huntington",
+    "raymond james", "jefferies", "moody", "broadridge", " adp", "paycom",
+    "paychex", "dayforce", "ceridian", "intercontinental exchange",
     # telecom / media-tech
-    "comcast", "verizon", "t-mobile", "disney", "warner bros", "expedia",
-    "booking", "thomson reuters",
+    "comcast", "nbcuniversal", "verizon", "at&t", "t-mobile", "dish ",
+    "charter", "cox ", "disney", "warner bros", "paramount", "fox ",
+    "expedia", "booking", "thomson reuters", "ericsson", "nokia",
+    # healthcare / pharma tech (big SWE/data shops)
+    "unitedhealth", "optum", "cvs", "humana", "cigna", "elevance", "centene",
+    "mckesson", "cardinal health", "ge healthcare", "medtronic", "stryker",
+    "boston scientific", "abbott", "illumina", "thermo fisher", "danaher",
+    "agilent", "philips",
+    # defense / aerospace / industrial tech (SWE-heavy)
+    "lockheed", "raytheon", "rtx", "northrop", "general dynamics", "l3harris",
+    "boeing", "ge aerospace", "collins aerospace", "leidos", "saic",
+    "booz allen", "caci", "honeywell", "emerson", "rockwell automation",
+    "caterpillar", "john deere", "deere", "cummins", "parker hannifin",
+    "eaton", "siemens", "schneider electric", "abb ",
+    # auto tech
+    "ford", "general motors", "stellantis", "toyota", "rivian", "lucid",
+    "bosch", "aptiv", "magna", "continental",
+    # big retail / consumer tech
+    "walmart", "target", "best buy", "home depot", "lowe", "nordstrom",
+    "wayfair", "chewy", "nike", "lululemon", " ulta",
 }
 
 

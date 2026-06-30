@@ -28,6 +28,11 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run the engine
+        env:
+          # Optional: add a repo secret named WORKDAY_PROXY (a proxy URL) so the
+          # cloud runner can reach Workday tenants that block datacenter IPs.
+          # If the secret isn't set, this is empty and Workday runs direct.
+          WORKDAY_PROXY: ${{ secrets.WORKDAY_PROXY }}
         run: python run.py update
 
       - name: Commit & push if changed

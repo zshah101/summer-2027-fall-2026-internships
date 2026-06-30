@@ -12,12 +12,24 @@ real date and leave vague ones ("30+ Days Ago") blank.
 
 from __future__ import annotations
 
+import os
 import re
 from datetime import datetime, timedelta, timezone
 
 import requests
 
 from ..models import Job
+
+
+def _proxies() -> dict | None:
+    """Optional proxy for Workday only (set WORKDAY_PROXY in the CI secrets).
+
+    Workday blocks cloud/datacenter IPs more aggressively than home IPs, so the
+    GitHub Actions runner may get refused. Pointing WORKDAY_PROXY at a cheap
+    residential/rotating proxy recovers those tenants. Unset = direct (default).
+    """
+    proxy = os.environ.get("WORKDAY_PROXY")
+    return {"http": proxy, "https": proxy} if proxy else None
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -57,7 +69,9 @@ def fetch(company: dict, session: requests.Session) -> list[Job]:
     url = f"https://{tenant}.{wd}.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs"
     body = {"appliedFacets": {}, "limit": 20, "offset": 0, "searchText": "intern"}
 
-    resp = session.post(url, json=body, headers=HEADERS, timeout=20)
+    resp = session.post(
+        url, json=body, headers=HEADERS, timeout=25, proxies=_proxies()
+    )
     resp.raise_for_status()
     data = resp.json()
 
