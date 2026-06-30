@@ -115,6 +115,13 @@
     "ats": "lever"
   },
   {
+    "name": "Activision-Blizzard",
+    "slug": "activision",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "External"
+  },
+  {
     "name": "Ad Council",
     "slug": "adcouncil",
     "ats": "greenhouse"
@@ -128,6 +135,13 @@
     "name": "Adaption Labs",
     "slug": "adaption",
     "ats": "ashby"
+  },
+  {
+    "name": "Adobe",
+    "slug": "adobe",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "external_experienced"
   },
   {
     "name": "Advanced Space",
@@ -315,6 +329,13 @@
     "ats": "greenhouse"
   },
   {
+    "name": "American Fidelity",
+    "slug": "americanfidelity",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "External"
+  },
+  {
     "name": "Amp Robotics",
     "slug": "ampsortation",
     "ats": "greenhouse"
@@ -323,6 +344,13 @@
     "name": "Amplitude",
     "slug": "amplitude",
     "ats": "greenhouse"
+  },
+  {
+    "name": "Analog Devices",
+    "slug": "analogdevices",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "External"
   },
   {
     "name": "Analysys Mason",
@@ -590,6 +618,13 @@
     "ats": "greenhouse"
   },
   {
+    "name": "Autodesk",
+    "slug": "autodesk",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "uni"
+  },
+  {
     "name": "AvePoint",
     "slug": "avepoint",
     "ats": "greenhouse"
@@ -658,6 +693,13 @@
     "name": "Bandwidth",
     "slug": "bandwidth",
     "ats": "greenhouse"
+  },
+  {
+    "name": "Bank of America",
+    "slug": "ghr",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "us-emplsv"
   },
   {
     "name": "Barkback",
@@ -760,6 +802,13 @@
     "ats": "ashby"
   },
   {
+    "name": "BlackRock",
+    "slug": "blackrock",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "BlackRock_Professional"
+  },
+  {
     "name": "BlackSky",
     "slug": "blacksky",
     "ats": "greenhouse"
@@ -783,6 +832,13 @@
     "name": "Blockhouse",
     "slug": "blockhouse",
     "ats": "ashby"
+  },
+  {
+    "name": "Bloomberg Industry Group",
+    "slug": "bloomberg",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "Bloombergindustrygroup_External_Career_Site"
   },
   {
     "name": "Bloomberg Philanthropies",
@@ -925,6 +981,13 @@
     "ats": "greenhouse"
   },
   {
+    "name": "Capital One",
+    "slug": "capitalone",
+    "ats": "workday",
+    "wd": "wd12",
+    "site": "Capital_One"
+  },
+  {
     "name": "Capital Rx",
     "slug": "capitalrx",
     "ats": "greenhouse"
@@ -953,6 +1016,13 @@
     "name": "Cartesian",
     "slug": "cartesiansystems",
     "ats": "greenhouse"
+  },
+  {
+    "name": "CCC Intelligent Solutions",
+    "slug": "cccis",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "broadbean_external"
   },
   {
     "name": "Cedar",
@@ -1013,6 +1083,20 @@
     "name": "Cirque du Soleil",
     "slug": "cirquedusoleil",
     "ats": "lever"
+  },
+  {
+    "name": "Cisco",
+    "slug": "cisco",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "cisco_careers"
+  },
+  {
+    "name": "Citi",
+    "slug": "citi",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "2"
   },
   {
     "name": "City of Philadelphia",
@@ -1148,6 +1232,13 @@
     "name": "Collaborative Robotics",
     "slug": "cobot",
     "ats": "ashby"
+  },
+  {
+    "name": "Comcast",
+    "slug": "comcast",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "Comcast_Careers"
   },
   {
     "name": "Commure",
@@ -1305,6 +1396,13 @@
     "ats": "ashby"
   },
   {
+    "name": "Crowdstrike",
+    "slug": "crowdstrike",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "crowdstrikecareers"
+  },
+  {
     "name": "Crown Innovations",
     "slug": "CrownInnovationsInc",
     "ats": "smartrecruiters"
@@ -1398,6 +1496,13 @@
     "name": "Deliveroo",
     "slug": "deliveroo",
     "ats": "ashby"
+  },
+  {
+    "name": "Dell Technologies",
+    "slug": "dell",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "External"
   },
   {
     "name": "Democratic Governors Association",
@@ -1755,6 +1860,13 @@
     "ats": "greenhouse"
   },
   {
+    "name": "Expedia Group",
+    "slug": "expedia",
+    "ats": "workday",
+    "wd": "wd108",
+    "site": "search"
+  },
+  {
     "name": "Expeditors",
     "slug": "Expeditors",
     "ats": "smartrecruiters"
@@ -1820,6 +1932,20 @@
     "ats": "lever"
   },
   {
+    "name": "Fidelity Investments",
+    "slug": "fmr",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "targeted"
+  },
+  {
+    "name": "Fidelity National Information Services",
+    "slug": "fis",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "searchjobs"
+  },
+  {
     "name": "Field AI",
     "slug": "field-ai",
     "ats": "lever"
@@ -1863,6 +1989,13 @@
     "name": "Fireworks AI",
     "slug": "fireworksai",
     "ats": "greenhouse"
+  },
+  {
+    "name": "Fiserv",
+    "slug": "fiserv",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "ext"
   },
   {
     "name": "Five Rings",
@@ -2350,6 +2483,20 @@
     "ats": "ashby"
   },
   {
+    "name": "Hewlett Packard (HP)",
+    "slug": "hp",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "ExternalCareerSite"
+  },
+  {
+    "name": "Hewlett Packard Enterprise",
+    "slug": "hpe",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "Jobsathpe"
+  },
+  {
     "name": "HeyGen",
     "slug": "heygen",
     "ats": "greenhouse"
@@ -2550,6 +2697,13 @@
     "ats": "greenhouse"
   },
   {
+    "name": "Inmar Intelligence",
+    "slug": "inmar",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "inmarcareers"
+  },
+  {
     "name": "Insitro",
     "slug": "insitro",
     "ats": "ashby"
@@ -2598,6 +2752,20 @@
     "name": "Integrated Resources",
     "slug": "IntegratedResourcesINC",
     "ats": "smartrecruiters"
+  },
+  {
+    "name": "Intel",
+    "slug": "intel",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "external"
+  },
+  {
+    "name": "Intelcom | Dragonfly",
+    "slug": "intelcomgroup",
+    "ats": "workday",
+    "wd": "wd3",
+    "site": "Intelcom"
   },
   {
     "name": "Intelerad",
@@ -2688,6 +2856,13 @@
     "name": "IVX Health",
     "slug": "ivxhealth",
     "ats": "greenhouse"
+  },
+  {
+    "name": "Ivy Tech Community College",
+    "slug": "ivytech",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "ivy_tech_careers"
   },
   {
     "name": "Jane Street",
@@ -3185,9 +3360,23 @@
     "ats": "greenhouse"
   },
   {
+    "name": "Marvell",
+    "slug": "marvell",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "marvellcareers2"
+  },
+  {
     "name": "Massachusetts School Building Authority",
     "slug": "massschoolbuildings",
     "ats": "lever"
+  },
+  {
+    "name": "Mastercard",
+    "slug": "mastercard",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "CorporateCareers"
   },
   {
     "name": "MAT Holdings",
@@ -3365,6 +3554,20 @@
     "ats": "greenhouse"
   },
   {
+    "name": "Microchip Technology",
+    "slug": "microchiphr",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "external"
+  },
+  {
+    "name": "Micron Technology",
+    "slug": "micron",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "External"
+  },
+  {
     "name": "Middesk",
     "slug": "middesk",
     "ats": "ashby"
@@ -3435,6 +3638,13 @@
     "ats": "ashby"
   },
   {
+    "name": "Morgan Stanley",
+    "slug": "ms",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "External"
+  },
+  {
     "name": "MSX International",
     "slug": "MSXInternational",
     "ats": "smartrecruiters"
@@ -3463,6 +3673,13 @@
     "name": "Mux",
     "slug": "mux",
     "ats": "ashby"
+  },
+  {
+    "name": "Nasdaq",
+    "slug": "nasdaq",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "Global_External_Site"
   },
   {
     "name": "Nash",
@@ -3570,6 +3787,13 @@
     "ats": "smartrecruiters"
   },
   {
+    "name": "Nightwing Intelligence Solutions",
+    "slug": "nwis",
+    "ats": "workday",
+    "wd": "wd12",
+    "site": "NW"
+  },
+  {
     "name": "Nimble Gravity",
     "slug": "nimblegravity",
     "ats": "greenhouse"
@@ -3643,6 +3867,20 @@
     "name": "Nuro",
     "slug": "nuro",
     "ats": "greenhouse"
+  },
+  {
+    "name": "NVIDIA",
+    "slug": "nvidia",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "NVIDIAExternalCareerSite"
+  },
+  {
+    "name": "NXP Semiconductors",
+    "slug": "nxp",
+    "ats": "workday",
+    "wd": "wd3",
+    "site": "careers"
   },
   {
     "name": "OakNorth Bank",
@@ -4435,6 +4673,13 @@
     "ats": "lever"
   },
   {
+    "name": "S&P Global",
+    "slug": "spgi",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "SPGI_Careers"
+  },
+  {
     "name": "SA Technologies",
     "slug": "SATechnologiesInc4",
     "ats": "smartrecruiters"
@@ -4443,6 +4688,13 @@
     "name": "Sajix",
     "slug": "SajixSoftwareSolutionPrivateLimited",
     "ats": "smartrecruiters"
+  },
+  {
+    "name": "Salesforce",
+    "slug": "salesforce",
+    "ats": "workday",
+    "wd": "wd12",
+    "site": "Futureforce_Internships"
   },
   {
     "name": "Salesloft",
@@ -4508,6 +4760,13 @@
     "name": "SanMar",
     "slug": "sanmar",
     "ats": "greenhouse"
+  },
+  {
+    "name": "Saputo",
+    "slug": "saputo",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "saputo_external_careers"
   },
   {
     "name": "Sardine",
@@ -4870,6 +5129,13 @@
     "ats": "ashby"
   },
   {
+    "name": "State Street",
+    "slug": "statestreet",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "Global"
+  },
+  {
     "name": "STCU",
     "slug": "STCU1",
     "ats": "smartrecruiters"
@@ -5013,6 +5279,13 @@
     "name": "System Canada Technologies",
     "slug": "systemCanadaTechnologies",
     "ats": "smartrecruiters"
+  },
+  {
+    "name": "T-Mobile",
+    "slug": "tmobile",
+    "ats": "workday",
+    "wd": "wd1",
+    "site": "External"
   },
   {
     "name": "Taara",
@@ -5180,6 +5453,13 @@
     "ats": "ashby"
   },
   {
+    "name": "The Walt Disney Company",
+    "slug": "disney",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "disneycareer"
+  },
+  {
     "name": "The Weather Company",
     "slug": "theweathercompany",
     "ats": "greenhouse"
@@ -5193,6 +5473,13 @@
     "name": "Thinkingbox",
     "slug": "thinkingbox",
     "ats": "lever"
+  },
+  {
+    "name": "Thomson Reuters",
+    "slug": "thomsonreuters",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "External_Career_Site"
   },
   {
     "name": "Tilde Research",
@@ -5365,6 +5652,13 @@
     "ats": "greenhouse"
   },
   {
+    "name": "Ultra Intelligence and Communications",
+    "slug": "ultra",
+    "ats": "workday",
+    "wd": "wd3",
+    "site": "uiccareers"
+  },
+  {
     "name": "Uncountable",
     "slug": "uncountable",
     "ats": "ashby"
@@ -5473,6 +5767,13 @@
     "name": "Verisign",
     "slug": "verisign",
     "ats": "greenhouse"
+  },
+  {
+    "name": "Verizon Communications",
+    "slug": "verizon",
+    "ats": "workday",
+    "wd": "wd12",
+    "site": "verizon-careers"
   },
   {
     "name": "Verkada",
@@ -5605,6 +5906,13 @@
     "ats": "ashby"
   },
   {
+    "name": "Warner Bros.",
+    "slug": "warnerbros",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "global"
+  },
+  {
     "name": "Warp",
     "slug": "warp",
     "ats": "greenhouse"
@@ -5725,6 +6033,13 @@
     "ats": "greenhouse"
   },
   {
+    "name": "Workday",
+    "slug": "workday",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "Workday_Early_Career"
+  },
+  {
     "name": "WorkOS",
     "slug": "workos",
     "ats": "ashby"
@@ -5833,6 +6148,13 @@
     "name": "Zone 5 Technologies",
     "slug": "zone5technologies",
     "ats": "greenhouse"
+  },
+  {
+    "name": "Zoom",
+    "slug": "zoom",
+    "ats": "workday",
+    "wd": "wd5",
+    "site": "zoom"
   },
   {
     "name": "ZoomInfo",

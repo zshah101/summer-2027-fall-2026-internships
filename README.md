@@ -2,7 +2,7 @@
 
 A self-updating engine that tracks tech internships so you don't have to. Instead of refreshing a dozen career pages by hand, it reads company hiring feeds directly and keeps one live list — newest roles on top, refreshed automatically throughout the day.
 
-**27 open roles · 1171 companies tracked · updated Jun 30, 2026 at 12:15 UTC**
+**31 open roles · 1217 companies tracked · updated Jun 30, 2026 at 12:22 UTC**
 
 **Star this repo** to save it and get updates when new roles are added.
 
@@ -33,17 +33,18 @@ I'm building this in the open and adding to it as it grows. Coming soon: **SMS/e
 
 ---
 
-## Summer 2027  (5 open)
+## Summer 2027  (6 open)
 
 | Company | Role | Category | Location | Posted | Apply |
 |---|---|---|---|---|---|
 | Ellipsis Labs | Software Engineer - 2027 Interns | Software | New York, New York | Mar 26, 2026 | [Apply](https://jobs.ashbyhq.com/ellipsislabs/02136b22-35b1-4b3d-8bef-567c3380a849) |
+| Anduril | 2027 Software Engineer Intern | Software | Atlanta +17 more | — | [Apply](https://boards.greenhouse.io/andurilindustries/jobs/5148079007?gh_jid=5148079007) |
 | Point72 | Summer 2027 Quantitative Developer Internship | Quant | New York | — | [Apply](https://boards.greenhouse.io/point72/jobs/7297613002?gh_jid=7297613002) |
 | Walleye Capital | Investment Data Science Intern (Summer 2027) | Data & ML/AI | New York, New York | — | [Apply](https://job-boards.greenhouse.io/walleyecapital-external-students/jobs/4676587006) |
 | Walleye Capital | Quantic – Quantitative Developer Intern (Summer 2027) | Quant | Boston, MA | — | [Apply](https://job-boards.greenhouse.io/walleyecapital-external-students/jobs/4679168006) |
 | Walleye Capital | Volatility Trading Developer Intern (Summer 2027) | Quant | New York, New York | — | [Apply](https://job-boards.greenhouse.io/walleyecapital-external-students/jobs/4679434006) |
 
-## Fall 2026  (22 open)
+## Fall 2026  (25 open)
 
 | Company | Role | Category | Location | Posted | Apply |
 |---|---|---|---|---|---|
@@ -59,6 +60,9 @@ I'm building this in the open and adding to it as it grows. Coming soon: **SMS/e
 | Notion | Software Engineer Intern (Fall 2026) | Software | San Francisco, California | Apr 06, 2026 | [Apply](https://jobs.ashbyhq.com/notion/5b15697c-fa91-4511-9482-c98a6ff29f90) |
 | Hermeus | Software Engineering Intern (HMI) - Fall 2026 | Software | Atlanta, GA | Apr 01, 2026 | [Apply](https://jobs.lever.co/hermeus/a3a1f0ea-6a4f-42e5-81c8-3b34dac22a67) |
 | Center for AI Safety | Research Engineer Intern (Fall 2026) | Software | San Francisco, CA | Mar 05, 2026 | [Apply](https://jobs.lever.co/aisafety/e011814b-9a80-43d6-bb0c-cc153ea4bec4) |
+| NVIDIA | Software Engineering Intern, JAX - Fall 2026 | Software | US, CA, Santa Clara | — | [Apply](https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Software-Engineering-Intern--JAX---Fall-2026_JR2009745) |
+| NVIDIA | Quantum Research Scientist Intern - Fall 2026 | Data & ML/AI | US, CA, Remote | — | [Apply](https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Remote/Quantum-Research-Scientist-Intern---Fall-2026_JR2018244) |
+| NVIDIA | Quantum Error Correction Research Scientist Intern - Fall 2026 | Data & ML/AI | US, CA, Remote | — | [Apply](https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Remote/Quantum-Error-Correction-Research-Scientist-Intern---Fall-2026_JR2018628) |
 | Astranis | Software Engineer- Backend Intern (Fall 2026) | Software | San Francisco, CA | — | [Apply](https://job-boards.greenhouse.io/astranis/jobs/4681183006) |
 | Figure | Firmware Intern [Fall 2026] | Hardware | San Jose, CA | — | [Apply](https://job-boards.greenhouse.io/figureai/jobs/4691070006) |
 | Gemini | Software Engineering Intern (Fall 2026) | Software | New York, New York | — | [Apply](https://boards.greenhouse.io/embed/job_app?for=gemini&token=7875125&gh_jid=7875125) |

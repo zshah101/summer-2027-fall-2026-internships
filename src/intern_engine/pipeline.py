@@ -17,13 +17,14 @@ from datetime import datetime, timedelta, timezone
 import requests
 
 from . import config, filters, paths, store
-from .connectors import ashby, greenhouse, lever, smartrecruiters
+from .connectors import ashby, greenhouse, lever, smartrecruiters, workday
 
 CONNECTORS = {
     "greenhouse": greenhouse.fetch,
     "lever": lever.fetch,
     "ashby": ashby.fetch,
     "smartrecruiters": smartrecruiters.fetch,
+    "workday": workday.fetch,
 }
 
 HEADERS = {"User-Agent": "intern-engine/1.0 (+github.com/intern-engine)"}
