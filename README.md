@@ -2,7 +2,7 @@
 
 A self-updating engine that tracks tech internships so you don't have to. Instead of refreshing a dozen career pages by hand, it reads company hiring feeds directly and keeps one live list, newest roles on top, refreshed automatically throughout the day.
 
-**38 open roles · 2078 companies tracked · updated Jun 30, 2026 at 19:33 UTC**
+**79 open roles · 2078 companies tracked · updated Jun 30, 2026 at 19:49 UTC**
 
 **⭐Star this repo⭐** to save it and get updates when new roles are added.
 
@@ -13,12 +13,12 @@ This is an engine, not a hand-kept list. It polls company career feeds several t
 ## Scope
 
 - **Roles:** Software Engineering, Data Science & Machine Learning (and closely related technical internships)
-- **Region:** United States only (for now)
+- **Region:** United States (primary), with a separate International section
 - **Cycles:** Summer 2027 and Fall 2026
 
 ## About
 
-I'm a US-based international student studying in the United States, so I built this for the search I'm doing myself. It's US-only for now. Use it to spot roles early and apply before they fill up - being first genuinely helps.
+I'm a US-based international student studying in the United States, so I built this for the search I'm doing myself. It started US-focused and now covers international roles too. Use it to spot roles early and apply before they fill up - being first genuinely helps.
 
 ## Where this is going
 
@@ -81,13 +81,64 @@ I'm building this in the open and adding to it as it grows. Coming soon: **SMS/e
 | Verkada | Backend Software Engineering Intern - Fall 2026 | Software | San Mateo, CA United States | — | [Apply](https://job-boards.greenhouse.io/verkada/jobs/5099422007) |
 | Verkada | Frontend Software Engineering Intern - Fall 2026 | Software | San Mateo, CA United States | — | [Apply](https://job-boards.greenhouse.io/verkada/jobs/5099529007) |
 
+## Summer 2027 (International)  (7 open)
+
+| Company | Role | Category | Location | Posted | Apply |
+|---|---|---|---|---|---|
+| Western Digital | Intern - Web Developer (Start in January 2027) | Software | Amphoe Si Maha Phot, Prachin Buri, TH | Jun 28, 2026 | [Apply](https://jobs.smartrecruiters.com/WesternDigital/744000134646354) |
+| Western Digital | Intern - Software Developer (Studying Bachelor Degree) - Start in January 2027 | Software | Amphoe Si Maha Phot, Prachin Buri, TH | Jun 28, 2026 | [Apply](https://jobs.smartrecruiters.com/WesternDigital/744000134646158) |
+| Amazon | 2027 Applied Science Intern (Computer Vision), Amazon International Machine Learning | Data & ML/AI | Melbourne, Victoria, AUS | Jun 26, 2026 | [Apply](https://www.amazon.jobs/en/jobs/10459543/2027-applied-science-intern-computer-vision-amazon-international-machine-learning) |
+| Amazon | 2027 Applied Science Intern (Machine Learning, Recommender Systems), Amazon International Machine Learning | Data & ML/AI | Melbourne, Victoria, AUS | Jun 23, 2026 | [Apply](https://www.amazon.jobs/en/jobs/10456239/2027-applied-science-intern-machine-learning-recommender-systems-amazon-international-machine-learning) |
+| Amazon | 2027 Software Dev Engineer Intern | Software | Dublin, IRL | May 13, 2026 | [Apply](https://www.amazon.jobs/en/jobs/10418355/2027-software-dev-engineer-intern) |
+| Aquatic Capital Management | Software Engineer, Intern (Summer 2027) | Software | Chicago | — | [Apply](https://job-boards.greenhouse.io/aquaticcapitalmanagement/jobs/8489233002) |
+| MongoDB | Software Engineering Internship - Summer 2026/2027 | Software | Sydney | — | [Apply](https://www.mongodb.com/careers/job/?gh_jid=7768470) |
+
+## Fall 2026 (International)  (34 open)
+
+| Company | Role | Category | Location | Posted | Apply |
+|---|---|---|---|---|---|
+| Salesforce | Data Analyst/AI - 6 months Interns - September 2026 | Data & ML/AI | France - Paris | Jun 24, 2026 | [Apply](https://salesforce.wd12.myworkdayjobs.com/Futureforce_Internships/job/France---Paris/Sales-Business-Analyst-6-months-Interns---September-2026_JR340530-3) |
+| General Dynamics UK | Co-op Fall 2026 - Software Developer - 8 Months | Software | Cole Harbour, NS, Canada | Jun 19, 2026 | [Apply](https://jobs.smartrecruiters.com/GDMSI/744000133125725) |
+| NVIDIA | Solution Architecture Intern, AI Infra - 2026 | Data & ML/AI | 2 Locations | Jun 15, 2026 | [Apply](https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/China-Beijing/Solution-Architecture-Intern--AI-Infra---2026_JR2019909) |
+| General Motors | 2026 Fall Intern - Research & Development: AI/ML | Data & ML/AI | 2 Locations | Jun 12, 2026 | [Apply](https://generalmotors.wd5.myworkdayjobs.com/Careers_GM/job/Warren-Michigan-United-States-of-America/XMLNAME-2026-Fall-Intern---Research---Development--AI-ML_JR-202612795) |
+| Zip | Software Engineer Intern (Fall 2026) | Software | Toronto | Jun 09, 2026 | [Apply](https://jobs.ashbyhq.com/zip/caa5ba75-3b38-4d29-88cd-69a90b01fd6f) |
+| NVIDIA | Solution Architecture Intern, AI in Industry - 2026 | Data & ML/AI | 3 Locations | Jun 04, 2026 | [Apply](https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/China-Beijing/Solution-Architecture-Intern--AI-in-Industry---2026_JR2014186) |
+| NVIDIA | Machine Learning Intern, Humanoid Robotics - 2026 | Data & ML/AI | China, Shanghai | Jun 04, 2026 | [Apply](https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/China-Shanghai/Machine-Learning-Intern--Humanoid-Robotics---2026_JR2018845) |
+| Snowflake | Software Engineer Intern - Berlin (2026) | Software | DE-Berlin-Trion Building | Jun 02, 2026 | [Apply](https://jobs.ashbyhq.com/snowflake/41e65c6c-a01e-4f40-af14-ae75d3b95e27) |
+| Snowflake | Software Engineer Intern (AI/ML) - 2026 | Data & ML/AI | PL-Warsaw | Jun 02, 2026 | [Apply](https://jobs.ashbyhq.com/snowflake/897e1850-c590-4462-b187-0516b65b2034) |
+| Snowflake | Research Intern (AI) - 2026 | Data & ML/AI | PL-Warsaw | Jun 02, 2026 | [Apply](https://jobs.ashbyhq.com/snowflake/e2412cd5-19dd-44f8-addd-c9ef3c99ff82) |
+| Achievers | Software Engineering Co-op - Fall 2026 | Software | Toronto | May 20, 2026 | [Apply](https://jobs.lever.co/achievers/6a348eef-0078-4d6a-bc90-f2d7077d2987) |
+| Cohere | Machine Learning Intern/Co-op  (Fall, 2026) | Data & ML/AI | Canada | May 13, 2026 | [Apply](https://jobs.ashbyhq.com/cohere/36d1f52f-8270-4652-adf5-5303a0ff341b) |
+| Cohere | Software Engineer Intern (Fall / Winter 2026) | Software | Canada | May 01, 2026 | [Apply](https://jobs.ashbyhq.com/cohere/8c035d3d-081d-4c8a-914a-72f4efaad254) |
+| Amazon | Software Dev Engineer Intern, (Devices) 2026 Beijing | Software | Beijing, CHN | Apr 19, 2026 | [Apply](https://www.amazon.jobs/en/jobs/10395459/software-dev-engineer-intern-devices-2026-beijing) |
+| Amazon | Technical Business Developer Intern, 2026 Hong Kong | Software | Hong Kong, Hong Kong SAR, HKG | Apr 17, 2026 | [Apply](https://www.amazon.jobs/en/jobs/10394507/technical-business-developer-intern-2026-hong-kong) |
+| Magnet Forensics | Software Developer Co-op (Fall 2026) | Software | Waterloo / Ottawa / Ontario | Apr 16, 2026 | [Apply](https://jobs.lever.co/magnetforensics/b9fdce72-4c58-46bb-b7e2-b4bdc90390e5) |
+| Magnet Forensics | Software Developer Engineer in Test Co-op (Fall 2026) | Software | Halifax, Nova Scotia | Apr 16, 2026 | [Apply](https://jobs.lever.co/magnetforensics/f125c8e7-052d-430d-b857-ceba1037f809) |
+| TELUS Digital | Data Science Intern (Argentina) - Year Round 2026 | Data & ML/AI | Buenos Aires, Argentina | Apr 14, 2026 | [Apply](https://jobs.ashbyhq.com/telus-digital/85eb53c0-2457-4e07-85c9-36ef7f0c50d0) |
+| TELUS Digital | AI Intern (Argentina) - Year Round 2026 | Data & ML/AI | Buenos Aires, Argentina | Apr 14, 2026 | [Apply](https://jobs.ashbyhq.com/telus-digital/8c55d9eb-4e10-44e8-b323-cbc2146b620f) |
+| TELUS Digital | Software Engineering Intern (Argentina) - Year Round 2026 | Software | Buenos Aires, Argentina | Apr 14, 2026 | [Apply](https://jobs.ashbyhq.com/telus-digital/d3c383b5-6a56-46b6-8c4e-186188b19e1a) |
+| Amazon | Software Development Engineer Internship - Fall 2026 (Canada) | Software | Vancouver, British Columbia, CAN | Apr 09, 2026 | [Apply](https://www.amazon.jobs/en/jobs/10387163/software-development-engineer-internship-fall-2026-canada) |
+| Creatify Lab | Software Engineer Intern 2026 | Software | Mountain View | Mar 18, 2026 | [Apply](https://jobs.ashbyhq.com/creatify/75a1f1ad-13d2-4513-952c-71b6dfcaa84f) |
+| Kepler Communications | Embedded Software Engineering Intern (September 2026) (4-8 months) | Software | Toronto, Ontario | Feb 02, 2026 | [Apply](https://jobs.lever.co/kepler/afe34c63-ab6d-42a6-8571-dab052ee9c41) |
+| Adobe | 2026 AI/ML Intern - Machine Learning Engineer/Researcher  Intern | Data & ML/AI | 3 Locations | — | [Apply](https://adobe.wd5.myworkdayjobs.com/external_experienced/job/San-Jose/XMLNAME-2026-AI-ML-Intern---Machine-Learning-Engineer-Intern_R160706) |
+| Adobe | 2026 AI/ML Intern - Machine Learning Engineer | Data & ML/AI | 7 Locations | — | [Apply](https://adobe.wd5.myworkdayjobs.com/external_experienced/job/San-Jose/XMLNAME-2026-AI-ML-Intern---Machine-Learning-Engineer_R158493) |
+| Adobe | 2026 Intern - Research Scientist/Engineer | Data & ML/AI | 7 Locations | — | [Apply](https://adobe.wd5.myworkdayjobs.com/external_experienced/job/San-Jose/XMLNAME-2026-Intern---Research-Scientist-Engineer_R160317) |
+| Astranis | Embedded Software Developer, Network/Payload Software Intern (Fall 2026) | Software | San Francisco | — | [Apply](https://job-boards.greenhouse.io/astranis/jobs/4601135006) |
+| Astranis | Flight Software Intern (Fall 2026) | Software | San Francisco | — | [Apply](https://job-boards.greenhouse.io/astranis/jobs/4619283006) |
+| DXC Technology | Network / Infrastructure Engineer Internship (2026 Intake) | Software | MYS - PETALING JAYA | — | [Apply](https://dxctechnology.wd1.myworkdayjobs.com/dxcjobs/job/MYS---PETALING-JAYA/Network---Infrastructure-Engineer-Internship--2026-Intake-_51580569) |
+| KRAFTON | Programming Intern Fall 2026  / Stagiaire en Programmation Automne 2026 | Software | Montreal, Quebec, Canada | — | [Apply](https://job-boards.greenhouse.io/studiokraftonboard/jobs/8613468002) |
+| Point72 | 2026 Technology Internship – Software Engineer | Software | Warsaw, Poland | — | [Apply](https://boards.greenhouse.io/point72/jobs/8406727002?gh_jid=8406727002) |
+| SpaceX | Fall 2026 Software Engineering Internship/Co-op | Software | Flexible - Any SpaceX Site | — | [Apply](https://boards.greenhouse.io/spacex/jobs/8403219002?gh_jid=8403219002) |
+| The Trade Desk | 2026 Australia Software Engineering Internship | Software | Sydney | — | [Apply](https://job-boards.greenhouse.io/thetradedesk/jobs/5033765007) |
+| Together AI | Systems Research Engineer Intern - GPU Programming (Fall 2026) | Software | San Francisco | — | [Apply](https://job-boards.greenhouse.io/togetherai/jobs/5157559007) |
+
 ---
 
 ## How it stays current
 
 A small Python engine reads public company hiring feeds directly, keeps the roles that match the scope above, de-duplicates across sources, records each role's published date once (so it never shifts), and regenerates this page through GitHub Actions. It polls every company concurrently (async) with retry/backoff and per-host rate limits. The full source is in this repo.
 
-_Engine (last run): 2,078 companies across 8 ATS platforms · 94% fetch success · completed in 57.8s._
+_Engine (last run): 2,078 companies across 8 ATS platforms · 94% fetch success · completed in 72.1s · median detection latency 3500 min._
 
 ## Contributing
 

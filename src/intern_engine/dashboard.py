@@ -79,7 +79,12 @@ def generate(store_data: dict, stats: dict) -> None:
     )
     cfg = config.load_config()
     updated = datetime.now(UTC).strftime("%b %d, %Y at %H:%M UTC")
-    region = "United States" if config.want_us(cfg) else "Worldwide"
+    if config.include_international(cfg):
+        region = "US + International"
+    elif config.want_us(cfg):
+        region = "United States"
+    else:
+        region = "Worldwide"
 
     html_doc = f"""<!DOCTYPE html>
 <html lang="en"><head>
@@ -124,6 +129,7 @@ def generate(store_data: dict, stats: dict) -> None:
   <div class="panels">
     <div><h2>Roles by source</h2>{_bars(stats.get("roles_by_source", {}))}</div>
     <div><h2>Roles by cycle</h2>{_bars(stats.get("roles_by_cycle", {}))}</div>
+    <div><h2>Roles by region</h2>{_bars(stats.get("roles_by_region", {}))}</div>
   </div>
   <h2>Open roles ({len(open_jobs)})</h2>
   <table><thead><tr><th>Company</th><th>Role</th><th>Cycle</th><th>Category</th>

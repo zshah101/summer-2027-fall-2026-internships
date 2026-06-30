@@ -74,3 +74,8 @@ def max_per_company(cfg: dict):
 def allowlist_only(cfg: dict) -> bool:
     """When true, show only recognizable (priority-listed) companies. Off by default."""
     return bool(cfg.get("allowlist_only", False))
+
+
+def include_international(cfg: dict) -> bool:
+    """When true, also keep non-US roles (shown in a separate International section)."""
+    return bool(cfg.get("include_international", False))

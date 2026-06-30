@@ -117,7 +117,7 @@ def run_update() -> tuple[dict, dict]:
     cycles = config.cycles(cfg)
     tech_only = cfg.get("role_scope", "tech") == "tech"
     restrict = config.restrict_region(cfg)
-    want_us, want_ca = config.want_us(cfg), config.want_canada(cfg)
+    include_intl = config.include_international(cfg)
     max_age = config.max_age_days(cfg)
     cutoff = (
         (datetime.now(UTC) - timedelta(days=max_age)).strftime("%Y-%m-%d")
@@ -151,8 +151,12 @@ def run_update() -> tuple[dict, dict]:
             season = filters.detect_season(job.title, cycles)
             if season is None:
                 continue
-            if restrict and not filters.region_ok(job.location, want_us, want_ca):
+            is_us = filters.is_united_states(job.location)
+            if restrict and not is_us and not include_intl:
                 continue
+            loc = (job.location or "").strip()
+            if not is_us and (not loc or loc == "—"):
+                continue  # international roles need a real location
             posted_day = (job.posted_at or "")[:10]
             if cutoff and posted_day and posted_day < cutoff:
                 continue
@@ -216,6 +220,9 @@ def _build_stats(companies, succeeded, errors, kept, existing, new_ids, duration
         "roles_matched": len(kept),
         "roles_by_source": dict(Counter(j.source for j in kept)),
         "roles_by_cycle": dict(Counter(j.season for j in kept)),
+        "roles_by_region": dict(Counter(
+            "US" if filters.is_united_states(j.location) else "International" for j in kept
+        )),
         "new_this_run": len(new_ids),
         "open_total": len(open_records),
         "detection_latency": _detection_latency(existing),

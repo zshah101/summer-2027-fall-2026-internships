@@ -11,7 +11,7 @@ import csv
 import json
 from datetime import UTC, datetime
 
-from . import config, paths, priority
+from . import config, filters, paths, priority
 
 
 def _engine_metrics() -> str:
@@ -132,14 +132,15 @@ def _header(cfg: dict, total_open: int, companies: int) -> list[str]:
         "",
         "- **Roles:** Software Engineering, Data Science & Machine Learning "
         "(and closely related technical internships)",
-        f"- **Region:** {region} only (for now)",
+        f"- **Region:** {region} (primary), with a separate International section",
         f"- **Cycles:** {cycles_phrase}",
         "",
         "## About",
         "",
         "I'm a US-based international student studying in the United States, so I "
-        "built this for the search I'm doing myself. It's US-only for now. Use it to "
-        "spot roles early and apply before they fill up - being first genuinely helps.",
+        "built this for the search I'm doing myself. It started US-focused and now "
+        "covers international roles too. Use it to spot roles early and apply before "
+        "they fill up - being first genuinely helps.",
         "",
         "## Where this is going",
         "",
@@ -218,33 +219,37 @@ def _select(rows: list[dict], limit, per_company) -> list[dict]:
     return sorted(rows, key=lambda r: _date_str(r)[:10], reverse=True)
 
 
+def _region_of(record: dict) -> str:
+    return "US" if filters.is_united_states(record.get("location") or "") else "International"
+
+
 def generate(store_data: dict) -> dict:
     cfg = config.load_config()
     cycles = config.cycles(cfg)
+    per_company = config.max_per_company(cfg)
 
     open_jobs = [r for r in store_data.values() if r.get("is_open")]
-    groups: dict[str, list[dict]] = {}
+    groups: dict[tuple[str, str], list[dict]] = {}
     for r in open_jobs:
-        groups.setdefault(r.get("season", ""), []).append(r)
+        groups.setdefault((_region_of(r), r.get("season", "")), []).append(r)
 
-    ordered_labels = cycles + [lbl for lbl in groups if lbl not in cycles]
-
-    per_company = config.max_per_company(cfg)
     sections: list[tuple[str, list[dict]]] = []
     displayed: list[dict] = []
-    for label in ordered_labels:
-        rows = _select(
-            groups.get(label) or [],
-            config.section_limit(cfg, label),
-            per_company,
-        )
-        if rows:
-            sections.append((label, rows))
-            displayed.extend(rows)
+    for region in ("US", "International"):
+        for cycle in cycles:
+            rows = _select(
+                groups.get((region, cycle)) or [],
+                config.section_limit(cfg, cycle),
+                per_company,
+            )
+            if rows:
+                heading = cycle if region == "US" else f"{cycle} (International)"
+                sections.append((heading, rows))
+                displayed.extend(rows)
 
     lines = _header(cfg, len(displayed), _company_count())
-    for label, rows in sections:
-        lines.append(f"## {label}  ({len(rows)} open)")
+    for heading, rows in sections:
+        lines.append(f"## {heading}  ({len(rows)} open)")
         lines.append("")
         lines.append("| Company | Role | Category | Location | Posted | Apply |")
         lines.append("|---|---|---|---|---|---|")
