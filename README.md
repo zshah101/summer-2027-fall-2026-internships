@@ -1,4 +1,4 @@
-# Summer 2027 Tech Internships
+# Summer 2027/Fall 2026 Tech Internships
 
 A self-updating engine that tracks tech internships so you don't have to. Instead of refreshing a dozen career pages by hand, it reads company hiring feeds directly and keeps one live list — newest roles on top, refreshed automatically throughout the day.
 
