@@ -1,6 +1,6 @@
 # Architecture
 
-[![CI](https://github.com/ShahZainSahir/summer-2027-fall-2026-internships/actions/workflows/ci.yml/badge.svg)](https://github.com/ShahZainSahir/summer-2027-fall-2026-internships/actions/workflows/ci.yml)
+[![CI](https://github.com/zshah101/summer-2027-fall-2026-internships/actions/workflows/ci.yml/badge.svg)](https://github.com/zshah101/summer-2027-fall-2026-internships/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.11-blue)
 ![async](https://img.shields.io/badge/I%2FO-async%20httpx-success)
 
