@@ -1,5 +1,5 @@
 # Summer 2027 Tech Internships
-**SPEED MATTERS WHEN YOU APPLY**
+
 A self-updating engine that tracks tech internships so you don't have to. Instead of refreshing a dozen career pages by hand, it reads company hiring feeds directly and keeps one live list — newest roles on top, refreshed automatically throughout the day.
 
 **35 open roles · 1282 companies tracked · updated Jun 30, 2026 at 16:25 UTC**
