@@ -8,6 +8,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+# Fields that exist only during a run and must never be written to the store
+# (descriptions are multi-KB blobs; we persist the classification, not the text).
+TRANSIENT_FIELDS = ("description",)
+
 
 @dataclass
 class Job:
@@ -21,4 +25,6 @@ class Job:
     posted_at: str | None = None   # real publish date, or None when unknown
     season: str = "Unspecified"    # cycle label, assigned by the pipeline
     category: str = "Other"
-    sponsorship: str = "unknown"   # reserved for the F-1 H-1B feature
+    sponsorship: str = "unknown"   # citizens-only | no-sponsorship | offers | unknown
+    salary: str | None = None      # pay text when the ATS exposes it (Ashby/Lever/Breezy)
+    description: str | None = None  # transient: raw posting text, used for classification

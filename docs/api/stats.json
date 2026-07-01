@@ -1,0 +1,63 @@
+{
+ "generated_at": "2026-07-01T20:55:33Z",
+ "duration_seconds": 273.1,
+ "companies_total": 3541,
+ "companies_by_source": {
+  "greenhouse": 945,
+  "lever": 332,
+  "ashby": 443,
+  "recruitee": 1,
+  "workday": 1383,
+  "smartrecruiters": 197,
+  "rippling": 51,
+  "oracle": 134,
+  "workable": 45,
+  "amazon": 1,
+  "breezy": 9
+ },
+ "quarantined": 0,
+ "fetched_ok": 3391,
+ "fetch_errors": 150,
+ "errors_by_source": {
+  "workday": 43,
+  "greenhouse": 37,
+  "lever": 33,
+  "ashby": 36,
+  "rippling": 1
+ },
+ "fetch_success_rate": 0.958,
+ "roles_matched": 49,
+ "roles_by_source": {
+  "ashby": 7,
+  "workday": 14,
+  "amazon": 5,
+  "greenhouse": 15,
+  "lever": 6,
+  "smartrecruiters": 1,
+  "workable": 1
+ },
+ "roles_by_cycle": {
+  "Fall 2026": 42,
+  "Summer 2027": 7
+ },
+ "roles_by_region": {
+  "US": 49
+ },
+ "sponsorship_counts": {
+  "unknown": 33,
+  "citizens-only": 12,
+  "offers": 1,
+  "no-sponsorship": 3
+ },
+ "posted_date_coverage": 1.0,
+ "enriched_this_run": 49,
+ "enrichment_detail_fetches": 31,
+ "purged_this_run": 0,
+ "new_this_run": 10,
+ "open_total": 49,
+ "detection_latency": {
+  "median_minutes": 3495.3,
+  "sample_size": 9,
+  "window_days": 7
+ }
+}

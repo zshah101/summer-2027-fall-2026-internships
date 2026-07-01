@@ -9,9 +9,9 @@ from __future__ import annotations
 
 import csv
 import json
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 
-from . import config, filters, paths, priority
+from . import config, filters, paths, priority, sponsorship
 
 
 def _engine_metrics() -> str:
@@ -30,6 +30,9 @@ def _engine_metrics() -> str:
     latency = stats.get("detection_latency") or {}
     if latency.get("median_minutes") is not None and latency.get("sample_size", 0) >= 5:
         line += f" · median detection latency {latency['median_minutes']:.0f} min"
+    coverage = stats.get("posted_date_coverage")
+    if coverage:
+        line += f" · real posted dates on {int(coverage * 100)}% of open roles"
     return line + "._"
 
 
@@ -73,9 +76,26 @@ def _pretty_date(record: dict) -> str:
         return iso[:10]
 
 
+def _is_new(record: dict, hours: int = 48) -> bool:
+    seen = (record.get("first_seen_at") or "")[:19]
+    if not seen:
+        return False
+    try:
+        seen_dt = datetime.strptime(seen, "%Y-%m-%dT%H:%M:%S").replace(tzinfo=UTC)
+    except ValueError:
+        return False
+    return datetime.now(UTC) - seen_dt <= timedelta(hours=hours)
+
+
 def _row(record: dict) -> str:
     company = _md_cell(record.get("company"))
     title = _md_cell(record.get("title"))
+    badges = " ".join(
+        b for b in (sponsorship.flag(record.get("sponsorship")), "🆕" if _is_new(record) else "")
+        if b
+    )
+    if badges:
+        title = f"{title} {badges}"
     location = _short_location(record.get("location"))
     category = _md_cell(record.get("category"))
     posted = _pretty_date(record)
@@ -103,10 +123,11 @@ def _company_count() -> int:
         return 0
 
 
-def _header(cfg: dict, total_open: int, companies: int) -> list[str]:
+def _header(cfg: dict, total_open: int, companies: int, new_week: int) -> list[str]:
     region = _region_label(cfg)
     cycles = config.cycles(cfg)
     cycles_phrase = " and ".join(cycles)
+    pages = config.pages_base()
 
     return [
         "# Summer 2027 Tech Internships",
@@ -116,10 +137,13 @@ def _header(cfg: dict, total_open: int, companies: int) -> list[str]:
         "feeds directly and keeps one live list, newest roles on top, refreshed "
         "automatically throughout the day.",
         "",
-        f"**{total_open} open roles · {companies} companies tracked · "
-        f"updated {_now_str()}**",
+        f"**{total_open} open roles · {new_week} new this week · {companies:,} companies "
+        f"tracked · updated {_now_str()}**",
         "",
         "**⭐Star this repo⭐** to save it and get updates when new roles are added.",
+        "",
+        f"**Live:** [dashboard]({pages}/) · [RSS feed]({pages}/feed.xml) "
+        f"(instant alerts in any RSS app) · [JSON API]({pages}/api/jobs.json)",
         "",
         "## What this is",
         "",
@@ -153,6 +177,10 @@ def _header(cfg: dict, total_open: int, companies: int) -> list[str]:
         "",
         "- Roles are grouped by cycle below - **newest posting on top, oldest at the bottom.**",
         "- The **Posted** column is the date the company published the role.",
+        "- **Flags:** 🇺🇸 = requires U.S. citizenship or a security clearance · "
+        "🛂 = the posting says it won't sponsor a work visa · 🆕 = spotted in the "
+        "last 48 hours. Sponsorship flags are detected automatically from each job "
+        "description - treat them as a strong hint and confirm on the posting.",
         "- Track your applications with [`data/internships.csv`](data/internships.csv) "
         "(opens in Excel / Google Sheets).",
         "- Missing a company? Adding one takes a single line, see "
@@ -223,6 +251,41 @@ def _region_of(record: dict) -> str:
     return "US" if filters.is_united_states(record.get("location") or "") else "International"
 
 
+def _new_this_week(open_jobs: list[dict]) -> int:
+    cutoff = (datetime.now(UTC) - timedelta(days=7)).strftime("%Y-%m-%dT%H:%M:%S")
+    return sum(1 for r in open_jobs if (r.get("first_seen_at") or "") >= cutoff)
+
+
+def _closed_section(store_data: dict, days: int = 14, cap: int = 40) -> list[str]:
+    """Roles that recently closed, kept visible (collapsed) so nobody wastes an
+    application on a listing that just died."""
+    cutoff = (datetime.now(UTC) - timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%S")
+    closed = [
+        r for r in store_data.values()
+        if not r.get("is_open") and (r.get("closed_at") or "") >= cutoff
+    ]
+    if not closed:
+        return []
+    closed.sort(key=lambda r: r.get("closed_at") or "", reverse=True)
+    closed = closed[:cap]
+    lines = [
+        "<details>",
+        f"<summary><strong>Recently closed</strong> — {len(closed)} roles taken down "
+        f"in the last {days} days</summary>",
+        "",
+        "| Company | Role | Cycle | Closed |",
+        "|---|---|---|---|",
+    ]
+    for r in closed:
+        closed_on = (r.get("closed_at") or "")[:10]
+        lines.append(
+            f"| {_md_cell(r.get('company'))} | {_md_cell(r.get('title'))} "
+            f"| {_md_cell(r.get('season'))} | {closed_on} |"
+        )
+    lines.extend(["", "</details>", ""])
+    return lines
+
+
 def generate(store_data: dict) -> dict:
     cfg = config.load_config()
     cycles = config.cycles(cfg)
@@ -247,7 +310,7 @@ def generate(store_data: dict) -> dict:
                 sections.append((heading, rows))
                 displayed.extend(rows)
 
-    lines = _header(cfg, len(displayed), _company_count())
+    lines = _header(cfg, len(displayed), _company_count(), _new_this_week(open_jobs))
     for heading, rows in sections:
         lines.append(f"## {heading}  ({len(rows)} open)")
         lines.append("")
@@ -263,6 +326,7 @@ def generate(store_data: dict) -> dict:
         )
         lines.append("")
 
+    lines.extend(_closed_section(store_data))
     lines.extend(_footer())
 
     with open(paths.README_PATH, "w", encoding="utf-8") as f:
@@ -276,7 +340,7 @@ def generate(store_data: dict) -> dict:
 def _write_csv(open_jobs: list[dict]) -> None:
     fields = [
         "company", "title", "season", "category", "location",
-        "posted_at", "first_seen_at", "url",
+        "sponsorship", "salary", "posted_at", "first_seen_at", "url",
     ]
     with open(paths.CSV_PATH, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")

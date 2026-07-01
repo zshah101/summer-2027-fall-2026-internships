@@ -36,13 +36,17 @@ jobs:
           # Unset = the engine still runs and exports README/CSV as normal.
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          # Optional: Discord channel webhook — posts each run's new roles.
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: python run.py update
 
       - name: Commit & push if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md data/jobs.json data/internships.csv data/stats.json docs/index.html
+          git add README.md data/jobs.json data/internships.csv data/stats.json \
+                  data/health.json data/history.jsonl \
+                  docs/index.html docs/feed.xml docs/api/jobs.json docs/api/stats.json
           if git diff --staged --quiet; then
             echo "No changes."
           else

@@ -19,9 +19,11 @@ The fastest way to help: **add companies.** More companies = more internships.
    ```
 4. Open a pull request.
 
-The harvester auto-detects the ATS, so you only need the name + slug. If a slug
-doesn't resolve on Greenhouse/Lever/Ashby, the company likely uses Workday or a
-custom system (not yet supported — see the roadmap in the README).
+The harvester auto-detects the ATS (Greenhouse, Lever, Ashby, SmartRecruiters,
+Rippling, Workable, Breezy, Recruitee), so you only need the name + slug.
+Workday/Oracle tenants need a `wd`/`site` (or `host`/`site`) pair — easiest is
+to run `python run.py discover` (it mines them from public datasets), or copy
+the shape of an existing entry in `data/companies.json`.
 
 ## Run locally
 
@@ -38,3 +40,11 @@ python run.py all      # harvest + update
 All the classification (internship / tech / season / category) lives in one
 file: [`src/intern_engine/filters.py`](src/intern_engine/filters.py). PRs that
 improve precision/recall against real titles are very welcome.
+
+## Improving the sponsorship flags
+
+The 🇺🇸 / 🛂 flags come from
+[`src/intern_engine/sponsorship.py`](src/intern_engine/sponsorship.py), which
+matches phrases employers actually write. Found a posting it gets wrong? Add
+the phrase to the right pattern **with a test** in
+`tests/test_sponsorship.py` — precision matters more than recall here.

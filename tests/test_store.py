@@ -37,6 +37,56 @@ class TestUpsert:
         store.upsert(existing, [], succeeded_keys=set())
         assert existing["a"]["is_open"] is True
 
+    def test_closed_gets_timestamp_and_reopening_clears_it(self):
+        existing: dict = {}
+        keys = {"greenhouse:stripe"}
+        store.upsert(existing, [_job_dict("a")], keys)
+        store.upsert(existing, [], keys)
+        assert existing["a"]["is_open"] is False
+        assert existing["a"]["closed_at"]
+        # The role comes back -> open again, closed_at wiped.
+        store.upsert(existing, [_job_dict("a")], keys)
+        assert existing["a"]["is_open"] is True
+        assert "closed_at" not in existing["a"]
+
+    def test_posted_at_backfills_blanks_but_never_shifts(self):
+        existing: dict = {}
+        keys = {"greenhouse:stripe"}
+        store.upsert(existing, [_job_dict("a")], keys)
+        assert existing["a"]["posted_at"] is None
+
+        dated = _job_dict("a") | {"posted_at": "2026-06-01T00:00:00Z"}
+        store.upsert(existing, [dated], keys)
+        assert existing["a"]["posted_at"] == "2026-06-01T00:00:00Z"  # blank filled
+
+        shifted = _job_dict("a") | {"posted_at": "2026-06-20T00:00:00Z"}
+        store.upsert(existing, [shifted], keys)
+        assert existing["a"]["posted_at"] == "2026-06-01T00:00:00Z"  # frozen
+
+    def test_sponsorship_verdict_never_clobbered_by_unknown(self):
+        existing: dict = {}
+        keys = {"greenhouse:stripe"}
+        flagged = _job_dict("a") | {"sponsorship": "no-sponsorship"}
+        store.upsert(existing, [flagged], keys, enriched_ids={"a"})
+        assert existing["a"]["sponsorship"] == "no-sponsorship"
+        assert existing["a"]["enriched_at"]
+
+        # Next run didn't re-enrich (verdict already stored) -> stays flagged.
+        unknown = _job_dict("a") | {"sponsorship": "unknown"}
+        store.upsert(existing, [unknown], keys)
+        assert existing["a"]["sponsorship"] == "no-sponsorship"
+
+
+class TestPurge:
+    def test_drops_long_closed_keeps_recent_and_open(self):
+        existing = {
+            "old": {"id": "old", "is_open": False, "closed_at": "2026-01-01T00:00:00Z"},
+            "recent": {"id": "recent", "is_open": False, "closed_at": store.now_iso()},
+            "open": {"id": "open", "is_open": True},
+        }
+        assert store.purge(existing, keep_closed_days=60) == 1
+        assert set(existing) == {"recent", "open"}
+
 
 class TestDedup:
     def test_collapses_same_role_and_prefers_dated(self):

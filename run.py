@@ -2,7 +2,7 @@
 
     python run.py harvest    # probe curated candidates -> data/companies.json
     python run.py discover   # mine public datasets for company tokens (big scale-up)
-    python run.py update     # fetch -> filter -> store -> regenerate README + CSV
+    python run.py update     # fetch -> filter -> enrich -> store -> publish everything
     python run.py all        # discover + harvest + update
 """
 
@@ -17,7 +17,9 @@ from intern_engine import (  # noqa: E402
     db,
     discover,
     harvester,
+    notify,
     pipeline,
+    publish,
     readme,
 )
 
@@ -47,15 +49,20 @@ def cmd_update() -> None:
     if not os.path.exists(os.path.join("data", "companies.json")):
         print("No data/companies.json yet — run `python run.py harvest` first.")
         sys.exit(1)
-    stats, store_data = pipeline.run_update()
+    stats, store_data, new_ids = pipeline.run_update()
     summary = readme.generate(store_data)
     dashboard.generate(store_data, stats)
+    feed_entries = publish.write_feed(store_data)
+    publish.write_api(store_data, stats)
     if db.sync(store_data, stats):
         print("  synced to Postgres   yes")
+    if notify.send_new_roles(store_data, new_ids):
+        print(f"  Discord alert        {len(new_ids)} new roles")
     print("Update complete:")
     for k, v in stats.items():
-        print(f"  {k:<20} {v}")
-    print(f"  README open roles    {summary['open']}")
+        print(f"  {k:<24} {v}")
+    print(f"  README open roles      {summary['open']}")
+    print(f"  feed entries           {feed_entries}")
 
 
 def main() -> None:

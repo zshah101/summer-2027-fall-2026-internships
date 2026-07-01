@@ -1,4 +1,8 @@
-"""Amazon Jobs search API: public JSON, one fixed endpoint (not per-tenant)."""
+"""Amazon Jobs search API: public JSON, one fixed endpoint (not per-tenant).
+
+The search payload includes each job's description and qualifications, so
+sponsorship classification needs no extra requests.
+"""
 
 from __future__ import annotations
 
@@ -29,6 +33,10 @@ async def fetch(company: dict, net: Net) -> list[Job]:
         results = data.get("jobs", [])
         for j in results:
             path = j.get("job_path") or ""
+            description = " ".join(
+                str(j.get(k) or "")
+                for k in ("description", "basic_qualifications", "preferred_qualifications")
+            )
             jobs.append(
                 Job(
                     id=f"amazon:amazon:{j.get('id_icims') or path}",
@@ -39,6 +47,7 @@ async def fetch(company: dict, net: Net) -> list[Job]:
                     location=(j.get("normalized_location") or j.get("location") or "—").strip() or "—",
                     url=("https://www.amazon.jobs" + path) if path else "https://www.amazon.jobs",
                     posted_at=_posted(j.get("posted_date")),
+                    description=description.strip() or None,
                 )
             )
         if len(results) < 100:

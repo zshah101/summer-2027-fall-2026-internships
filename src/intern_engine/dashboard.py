@@ -1,16 +1,19 @@
 """Generate a self-contained metrics + listings dashboard for GitHub Pages.
 
-Writes docs/index.html with the run metrics and current open roles baked in (no
-external fetches, so it works the moment Pages serves it). Regenerated every run.
+Writes docs/index.html with the run metrics, a run-history sparkline, and the
+current open roles baked in (no external fetches, so it works the moment Pages
+serves it). Filtering/search runs client-side in vanilla JS — the page stays a
+single static file. Regenerated every run.
 """
 
 from __future__ import annotations
 
+import json
 import os
 from datetime import UTC, datetime
 from html import escape
 
-from . import config, paths
+from . import config, paths, sponsorship
 
 
 def _cards(stats: dict) -> str:
@@ -25,6 +28,7 @@ def _cards(stats: dict) -> str:
         ("Companies tracked", f"{stats.get('companies_total', 0):,}"),
         ("ATS sources", len(stats.get("companies_by_source", {}))),
         ("Fetch success", f"{int(stats.get('fetch_success_rate', 0) * 100)}%"),
+        ("Quarantined boards", stats.get("quarantined", 0)),
         ("New this run", stats.get("new_this_run", 0)),
         ("Detection latency", lat),
         ("Last run", f"{stats.get('duration_seconds', 0)}s"),
@@ -51,24 +55,76 @@ def _bars(counter: dict) -> str:
     return "".join(rows)
 
 
+def _history_points(limit: int = 120) -> list[dict]:
+    points = []
+    try:
+        with open(paths.HISTORY_PATH, encoding="utf-8") as f:
+            for line in f.read().splitlines()[-limit:]:
+                try:
+                    points.append(json.loads(line))
+                except ValueError:
+                    continue
+    except OSError:
+        pass
+    return points
+
+
+def _sparkline(points: list[dict]) -> str:
+    """Inline SVG of open-role count across recent runs. No JS, no deps."""
+    values = [p.get("open", 0) for p in points]
+    if len(values) < 2:
+        return "<p class='muted'>History chart appears after a few more runs.</p>"
+    w, h, pad = 640, 80, 4
+    lo, hi = min(values), max(values)
+    span = (hi - lo) or 1
+    step = (w - 2 * pad) / (len(values) - 1)
+    coords = [
+        f"{pad + i * step:.1f},{h - pad - (v - lo) / span * (h - 2 * pad):.1f}"
+        for i, v in enumerate(values)
+    ]
+    first_ts = (points[0].get("ts") or "")[:10]
+    return (
+        f'<svg viewBox="0 0 {w} {h}" preserveAspectRatio="none" class="spark" role="img" '
+        f'aria-label="Open roles per run">'
+        f'<polyline fill="none" stroke="var(--accent)" stroke-width="2" points="{" ".join(coords)}"/>'
+        "</svg>"
+        f'<p class="muted spark-caption">Open roles per run since {escape(first_ts)} — '
+        f"now {values[-1]}, peak {hi}.</p>"
+    )
+
+
 def _rows(open_jobs: list[dict]) -> str:
     rows = []
     for r in open_jobs:
         posted = (r.get("posted_at") or "")[:10] or "—"
         url = r.get("url") or ""
         apply = f'<a href="{escape(url)}" target="_blank" rel="noopener">Apply</a>' if url else "—"
+        sponsor = r.get("sponsorship", "unknown")
+        flag = sponsorship.flag(sponsor)
+        salary = r.get("salary") or ""
+        haystack = " ".join(
+            str(r.get(k) or "") for k in ("company", "title", "location", "category")
+        ).lower()
         rows.append(
-            "<tr>"
+            f'<tr data-cycle="{escape(r.get("season", ""))}" '
+            f'data-category="{escape(r.get("category", ""))}" '
+            f'data-sponsor="{escape(sponsor)}" '
+            f'data-text="{escape(haystack)}">'
             f"<td>{escape(r.get('company', ''))}</td>"
-            f"<td>{escape(r.get('title', ''))}</td>"
+            f"<td>{escape(r.get('title', ''))} {flag}</td>"
             f"<td><span class='tag'>{escape(r.get('season', ''))}</span></td>"
             f"<td>{escape(r.get('category', ''))}</td>"
             f"<td>{escape((r.get('location') or '')[:48])}</td>"
+            f"<td class='muted'>{escape(salary[:36])}</td>"
             f"<td>{escape(posted)}</td>"
             f"<td>{apply}</td>"
             "</tr>"
         )
     return "".join(rows)
+
+
+def _options(values: list[str]) -> str:
+    return "".join(f'<option value="{escape(v)}">{escape(v)}</option>' for v in values)
 
 
 def generate(store_data: dict, stats: dict) -> None:
@@ -86,19 +142,25 @@ def generate(store_data: dict, stats: dict) -> None:
     else:
         region = "Worldwide"
 
+    cycles = sorted({r.get("season", "") for r in open_jobs if r.get("season")})
+    categories = sorted({r.get("category", "") for r in open_jobs if r.get("category")})
+    repo = config.repo_slug()
+
     html_doc = f"""<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Internship Engine - Live Dashboard</title>
+<link rel="alternate" type="application/atom+xml" title="New internships" href="feed.xml">
 <style>
   :root {{ --bg:#0d1117; --card:#161b22; --line:#30363d; --txt:#e6edf3;
            --muted:#8b949e; --accent:#2f81f7; --green:#3fb950; }}
   * {{ box-sizing:border-box; }}
   body {{ margin:0; background:var(--bg); color:var(--txt);
           font:15px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }}
-  .wrap {{ max-width:1040px; margin:0 auto; padding:32px 20px 64px; }}
+  .wrap {{ max-width:1100px; margin:0 auto; padding:32px 20px 64px; }}
   h1 {{ font-size:26px; margin:0 0 4px; }}
   .sub {{ color:var(--muted); margin:0 0 24px; }}
+  .sub a {{ color:var(--accent); }}
   .grid {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
            gap:12px; margin-bottom:28px; }}
   .card {{ background:var(--card); border:1px solid var(--line); border-radius:10px;
@@ -113,6 +175,16 @@ def generate(store_data: dict, stats: dict) -> None:
   .btrack {{ flex:1; height:8px; background:#21262d; border-radius:6px; overflow:hidden; }}
   .bfill {{ display:block; height:100%; background:var(--accent); }}
   .bval {{ width:36px; text-align:right; }}
+  .spark {{ width:100%; height:80px; display:block; background:var(--card);
+            border:1px solid var(--line); border-radius:10px; }}
+  .spark-caption {{ font-size:12px; margin:6px 0 0; }}
+  .filters {{ display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 4px; align-items:center; }}
+  .filters input[type=search], .filters select {{
+      background:var(--card); color:var(--txt); border:1px solid var(--line);
+      border-radius:8px; padding:7px 10px; font-size:13.5px; }}
+  .filters input[type=search] {{ flex:1; min-width:180px; }}
+  .filters label.chk {{ color:var(--muted); font-size:13px; display:flex;
+      align-items:center; gap:6px; cursor:pointer; }}
   table {{ width:100%; border-collapse:collapse; margin-top:8px; font-size:13.5px; }}
   th,td {{ text-align:left; padding:8px 10px; border-bottom:1px solid var(--line);
            vertical-align:top; }}
@@ -124,20 +196,56 @@ def generate(store_data: dict, stats: dict) -> None:
   footer {{ color:var(--muted); font-size:12px; margin-top:36px; }}
 </style></head><body><div class="wrap">
   <h1>Internship Engine - Live Dashboard</h1>
-  <p class="sub">{region} tech internships, refreshed automatically. Updated {escape(updated)}.</p>
+  <p class="sub">{region} tech internships, refreshed automatically. Updated {escape(updated)}.
+  <a href="feed.xml">RSS feed</a> · <a href="api/jobs.json">JSON API</a> ·
+  <a href="https://github.com/{escape(repo)}">GitHub</a></p>
   <div class="grid">{_cards(stats)}</div>
+  {_sparkline(_history_points())}
   <div class="panels">
     <div><h2>Roles by source</h2>{_bars(stats.get("roles_by_source", {}))}</div>
     <div><h2>Roles by cycle</h2>{_bars(stats.get("roles_by_cycle", {}))}</div>
-    <div><h2>Roles by region</h2>{_bars(stats.get("roles_by_region", {}))}</div>
   </div>
-  <h2>Open roles ({len(open_jobs)})</h2>
+  <h2>Open roles (<span id="count">{len(open_jobs)}</span>)</h2>
+  <div class="filters">
+    <input id="q" type="search" placeholder="Search company, role, location…" autocomplete="off">
+    <select id="cycle"><option value="">All cycles</option>{_options(cycles)}</select>
+    <select id="cat"><option value="">All categories</option>{_options(categories)}</select>
+    <label class="chk"><input id="f1" type="checkbox">
+      F-1 friendly only (hide 🇺🇸 citizens-only and 🛂 no-sponsorship)</label>
+  </div>
   <table><thead><tr><th>Company</th><th>Role</th><th>Cycle</th><th>Category</th>
-  <th>Location</th><th>Posted</th><th></th></tr></thead>
-  <tbody>{_rows(open_jobs)}</tbody></table>
+  <th>Location</th><th>Salary</th><th>Posted</th><th></th></tr></thead>
+  <tbody id="rows">{_rows(open_jobs)}</tbody></table>
   <footer>Generated by the engine on each run. Companies polled across
-  {len(stats.get("companies_by_source", {}))} ATS platforms.</footer>
-</div></body></html>"""
+  {len(stats.get("companies_by_source", {}))} ATS platforms. Sponsorship flags are
+  auto-detected from posting text — verify on the posting itself.</footer>
+</div>
+<script>
+(function () {{
+  var q = document.getElementById('q'), cycle = document.getElementById('cycle'),
+      cat = document.getElementById('cat'), f1 = document.getElementById('f1'),
+      rows = Array.prototype.slice.call(document.getElementById('rows').rows),
+      count = document.getElementById('count');
+  function apply() {{
+    var text = q.value.trim().toLowerCase(), cy = cycle.value, ca = cat.value,
+        safe = f1.checked, shown = 0;
+    rows.forEach(function (tr) {{
+      var ok = (!text || tr.dataset.text.indexOf(text) !== -1)
+        && (!cy || tr.dataset.cycle === cy)
+        && (!ca || tr.dataset.category === ca)
+        && (!safe || (tr.dataset.sponsor !== 'citizens-only'
+                      && tr.dataset.sponsor !== 'no-sponsorship'));
+      tr.style.display = ok ? '' : 'none';
+      if (ok) shown++;
+    }});
+    count.textContent = shown;
+  }}
+  [q, cycle, cat, f1].forEach(function (el) {{
+    el.addEventListener('input', apply); el.addEventListener('change', apply);
+  }});
+}})();
+</script>
+</body></html>"""
 
     os.makedirs(paths.DOCS_DIR, exist_ok=True)
     with open(paths.DASHBOARD_PATH, "w", encoding="utf-8") as f:

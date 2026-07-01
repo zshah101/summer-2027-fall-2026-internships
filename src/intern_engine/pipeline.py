@@ -1,9 +1,11 @@
 """The watcher + spotter.
 
-Fetches every tracked company concurrently (async, with global and per-host
-concurrency caps), normalizes results into one shape, keeps the roles that match
-the configured scope, de-duplicates across sources, merges them into the store
-(detecting what's new and what's closed), and records run metrics.
+One async pass per run: quarantine-check every tracked company (circuit
+breaker), fetch the healthy ones concurrently (global + per-host concurrency
+caps), normalize into one shape, keep the roles that match the configured
+scope, de-duplicate across sources, enrich the keepers with posting text
+(sponsorship classification + date backfill), merge into the store (detecting
+what's new and what closed), and record run metrics + a history line.
 """
 
 from __future__ import annotations
@@ -20,15 +22,18 @@ from datetime import UTC, datetime, timedelta
 
 import httpx
 
-from . import config, filters, paths, quality, store
+from . import config, enrich, filters, health, models, paths, quality, store
 from .connectors import (
     amazon,
     ashby,
+    breezy,
     greenhouse,
     lever,
     oracle,
+    recruitee,
     rippling,
     smartrecruiters,
+    workable,
     workday,
 )
 from .net import HostLimiter, Net
@@ -42,11 +47,14 @@ CONNECTORS = {
     "amazon": amazon.fetch,
     "oracle": oracle.fetch,
     "rippling": rippling.fetch,
+    "workable": workable.fetch,
+    "breezy": breezy.fetch,
+    "recruitee": recruitee.fetch,
 }
 
 GLOBAL_CONCURRENCY = 32
 PER_HOST_CONCURRENCY = 8
-USER_AGENT = "intern-engine/2.0 (+github.com/intern-engine)"
+USER_AGENT = f"intern-engine/3.0 (+https://github.com/{config.repo_slug()})"
 
 
 def _load_companies() -> list[dict]:
@@ -65,7 +73,9 @@ async def _fetch_one(company: dict, net: Net):
         return company, [], f"{type(exc).__name__}: {exc}"
 
 
-async def _fetch_all(companies: list[dict]):
+async def _fetch_all(companies: list[dict], enrich_after):
+    """Fetch every company, then run `enrich_after(results, net)` on the same
+    client session so enrichment reuses connections instead of reopening them."""
     limiter = HostLimiter(PER_HOST_CONCURRENCY)
     gate = asyncio.Semaphore(GLOBAL_CONCURRENCY)
     proxy = os.environ.get("WORKDAY_PROXY") or None
@@ -88,7 +98,9 @@ async def _fetch_all(companies: list[dict]):
                 return await _fetch_one(company, net)
 
         try:
-            return await asyncio.gather(*(worker(c) for c in companies))
+            results = await asyncio.gather(*(worker(c) for c in companies))
+            enrich_result = await enrich_after(results, default_net, workday_net)
+            return results, enrich_result
         finally:
             if workday_client is not None:
                 await workday_client.aclose()
@@ -112,31 +124,27 @@ def _dedup(jobs: list) -> list:
     return unique
 
 
-def run_update() -> tuple[dict, dict]:
-    cfg = config.load_config()
+def _keep_matching(results, cfg, blocklist) -> tuple[list, set[str], int, Counter]:
+    """Apply every scope filter; return (kept jobs, succeeded keys, errors, errors by ats)."""
     cycles = config.cycles(cfg)
     tech_only = cfg.get("role_scope", "tech") == "tech"
     restrict = config.restrict_region(cfg)
     include_intl = config.include_international(cfg)
+    allowlist_only = config.allowlist_only(cfg)
     max_age = config.max_age_days(cfg)
     cutoff = (
         (datetime.now(UTC) - timedelta(days=max_age)).strftime("%Y-%m-%d")
         if max_age else None
     )
 
-    blocklist = quality.load_blocklist()
-    allowlist_only = config.allowlist_only(cfg)
-
-    companies = _load_companies()
-    started = time.monotonic()
-    results = asyncio.run(_fetch_all(companies))
-
     kept = []
     succeeded: set[str] = set()
     errors = 0
+    errors_by_ats: Counter = Counter()
     for company, jobs, error in results:
         if error is not None:
             errors += 1
+            errors_by_ats[company.get("ats", "?")] += 1
             continue
         succeeded.add(f"{company['ats']}:{company['slug']}")
         if quality.is_blocked(company["name"], blocklist):
@@ -163,16 +171,61 @@ def run_update() -> tuple[dict, dict]:
             job.season = season
             job.category = filters.categorize(job.title)
             kept.append(job)
+    return kept, succeeded, errors, errors_by_ats
 
-    kept = _dedup(kept)
+
+def run_update() -> tuple[dict, dict, list[str]]:
+    cfg = config.load_config()
+    blocklist = quality.load_blocklist()
+    companies = _load_companies()
     existing = store.load(paths.JOBS_PATH)
-    new_ids = store.upsert(existing, [asdict(j) for j in kept], succeeded)
+
+    health_data = health.load()
+    active, benched = health.partition(companies, health_data)
+
+    started = time.monotonic()
+    kept: list = []
+    enriched_ids: set[str] = set()
+    detail_fetches = 0
+
+    async def _enrich_stage(results, net, workday_net):
+        """Filter first (cheap, sync), then enrich only the keepers."""
+        nonlocal kept
+        kept, succeeded, errors, errors_by_ats = _keep_matching(results, cfg, blocklist)
+        kept = _dedup(kept)
+        # Workday/Oracle enrichment goes through the same proxied client as fetch.
+        wd_jobs = [j for j in kept if j.source in ("workday", "oracle")]
+        other = [j for j in kept if j.source not in ("workday", "oracle")]
+        ids_a, n_a = await enrich.enrich_jobs(other, existing, net)
+        ids_b, n_b = await enrich.enrich_jobs(wd_jobs, existing, workday_net)
+        return succeeded, errors, errors_by_ats, ids_a | ids_b, n_a + n_b
+
+    results, (succeeded, errors, errors_by_ats, enriched_ids, detail_fetches) = asyncio.run(
+        _fetch_all(active, _enrich_stage)
+    )
+
+    for company, _jobs, error in results:
+        health.record(health_data, company, error)
+    health.save(health_data)
+
+    rows = []
+    for job in kept:
+        row = asdict(job)
+        for field in models.TRANSIENT_FIELDS:
+            row.pop(field, None)
+        rows.append(row)
+
+    new_ids = store.upsert(existing, rows, succeeded, enriched_ids)
+    purged = store.purge(existing)
     store.save(paths.JOBS_PATH, existing)
 
-    stats = _build_stats(companies, succeeded, errors, kept, existing, new_ids,
-                         round(time.monotonic() - started, 1))
+    stats = _build_stats(
+        companies, benched, succeeded, errors, errors_by_ats, kept, existing, new_ids,
+        len(enriched_ids), detail_fetches, purged, round(time.monotonic() - started, 1),
+    )
     _write_stats(stats)
-    return stats, existing
+    _append_history(stats)
+    return stats, existing, new_ids
 
 
 def _parse_iso(value: str) -> datetime | None:
@@ -207,22 +260,34 @@ def _detection_latency(existing: dict, window_days: int = 7) -> dict:
     }
 
 
-def _build_stats(companies, succeeded, errors, kept, existing, new_ids, duration) -> dict:
+def _build_stats(companies, benched, succeeded, errors, errors_by_ats, kept, existing,
+                 new_ids, enriched, detail_fetches, purged, duration) -> dict:
     open_records = [r for r in existing.values() if r.get("is_open")]
+    attempted = len(companies) - len(benched)
+    dated = sum(1 for r in open_records if r.get("posted_at"))
     return {
         "generated_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "duration_seconds": duration,
         "companies_total": len(companies),
         "companies_by_source": dict(Counter(c["ats"] for c in companies)),
+        "quarantined": len(benched),
         "fetched_ok": len(succeeded),
         "fetch_errors": errors,
-        "fetch_success_rate": round(len(succeeded) / max(len(companies), 1), 3),
+        "errors_by_source": dict(errors_by_ats),
+        "fetch_success_rate": round(len(succeeded) / max(attempted, 1), 3),
         "roles_matched": len(kept),
         "roles_by_source": dict(Counter(j.source for j in kept)),
         "roles_by_cycle": dict(Counter(j.season for j in kept)),
         "roles_by_region": dict(Counter(
             "US" if filters.is_united_states(j.location) else "International" for j in kept
         )),
+        "sponsorship_counts": dict(Counter(
+            r.get("sponsorship", "unknown") for r in open_records
+        )),
+        "posted_date_coverage": round(dated / max(len(open_records), 1), 3),
+        "enriched_this_run": enriched,
+        "enrichment_detail_fetches": detail_fetches,
+        "purged_this_run": purged,
         "new_this_run": len(new_ids),
         "open_total": len(open_records),
         "detection_latency": _detection_latency(existing),
@@ -232,3 +297,28 @@ def _build_stats(companies, succeeded, errors, kept, existing, new_ids, duration
 def _write_stats(stats: dict) -> None:
     with open(paths.STATS_PATH, "w", encoding="utf-8") as f:
         json.dump(stats, f, indent=2, ensure_ascii=False)
+
+
+_HISTORY_KEEP = 1000  # ~3 months of 2-hourly runs
+
+
+def _append_history(stats: dict) -> None:
+    """One compact line per run — the time series behind the dashboard chart."""
+    line = json.dumps({
+        "ts": stats["generated_at"],
+        "open": stats["open_total"],
+        "new": stats["new_this_run"],
+        "companies": stats["companies_total"],
+        "ok_rate": stats["fetch_success_rate"],
+        "quarantined": stats["quarantined"],
+        "secs": stats["duration_seconds"],
+    }, ensure_ascii=False)
+    lines = []
+    try:
+        with open(paths.HISTORY_PATH, encoding="utf-8") as f:
+            lines = f.read().splitlines()
+    except OSError:
+        pass
+    lines.append(line)
+    with open(paths.HISTORY_PATH, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines[-_HISTORY_KEEP:]) + "\n")

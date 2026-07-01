@@ -9,11 +9,14 @@ import asyncio
 from intern_engine.connectors import (
     amazon,
     ashby,
+    breezy,
     greenhouse,
     lever,
     oracle,
+    recruitee,
     rippling,
     smartrecruiters,
+    workable,
     workday,
 )
 
@@ -23,11 +26,14 @@ class FakeNet:
 
     def __init__(self, payload):
         self.payload = payload
+        self.urls = []
 
     async def get_json(self, url, **kwargs):
+        self.urls.append(url)
         return self.payload
 
     async def post_json(self, url, **kwargs):
+        self.urls.append(url)
         return self.payload
 
 
@@ -39,7 +45,8 @@ def test_greenhouse():
     payload = {"jobs": [{
         "id": 42, "title": "Software Engineer Intern",
         "location": {"name": "New York, NY"}, "absolute_url": "https://gh/42",
-        "updated_at": "2026-06-01T00:00:00Z",
+        "first_published": "2026-06-01T08:00:00-04:00",
+        "updated_at": "2026-06-15T00:00:00Z",
     }]}
     jobs = _run(greenhouse.fetch({"name": "Acme", "slug": "acme"}, FakeNet(payload)))
     assert len(jobs) == 1
@@ -48,7 +55,7 @@ def test_greenhouse():
     assert j.title == "Software Engineer Intern"
     assert j.location == "New York, NY"
     assert j.url == "https://gh/42"
-    assert j.posted_at is None  # Greenhouse exposes no real publish date
+    assert j.posted_at == "2026-06-01T08:00:00-04:00"  # true publish date, not updated_at
 
 
 def test_lever():
@@ -56,11 +63,16 @@ def test_lever():
         "id": "abc", "text": "SWE Intern",
         "categories": {"location": "San Francisco"},
         "hostedUrl": "https://lever/abc", "createdAt": 1717200000000,
+        "descriptionPlain": "Build things.",
+        "additionalPlain": "We are unable to sponsor visas.",
+        "salaryRange": {"min": 40000, "max": 60000, "currency": "USD", "interval": "per-year-salary"},
     }]
     jobs = _run(lever.fetch({"name": "Acme", "slug": "acme"}, FakeNet(payload)))
     assert jobs[0].id == "lever:acme:abc"
     assert jobs[0].location == "San Francisco"
     assert jobs[0].posted_at and jobs[0].posted_at.startswith("2024")
+    assert "unable to sponsor" in jobs[0].description  # free text for the classifier
+    assert jobs[0].salary == "40,000–60,000 USD / per year salary"
 
 
 def test_ashby_skips_unlisted():
@@ -116,10 +128,64 @@ def test_workday_relative_dates():
          "postedOn": "Posted 30+ Days Ago"},
     ]}
     company = {"name": "Acme", "slug": "acme", "wd": "wd5", "site": "Careers"}
-    jobs = _run(workday.fetch(company, FakeNet(payload)))
+    net = FakeNet(payload)
+    jobs = _run(workday.fetch(company, net))
     assert jobs[0].posted_at is not None        # "3 Days Ago" resolves to a date
     assert jobs[1].posted_at is None            # "30+ Days Ago" is too vague
     assert jobs[0].url.endswith("/Careers/job/1")
+    # 2 postings < page size -> exactly one request, no useless pagination.
+    assert len(net.urls) == 1
+    assert net.urls[0] == "https://acme.wd5.myworkdayjobs.com/wday/cxs/acme/Careers/jobs"
+
+
+def test_workday_path_style_host():
+    payload = {"jobPostings": [
+        {"title": "SWE Intern", "externalPath": "/job/1", "locationsText": "AZ"},
+    ]}
+    company = {"name": "Microchip", "slug": "microchiphr", "wd": "wd5",
+               "site": "External", "host": "wd5.myworkdaysite.com"}
+    net = FakeNet(payload)
+    jobs = _run(workday.fetch(company, net))
+    assert net.urls[0] == "https://wd5.myworkdaysite.com/wday/cxs/microchiphr/External/jobs"
+    assert jobs[0].url == "https://wd5.myworkdaysite.com/recruiting/microchiphr/External/job/1"
+
+
+def test_workable():
+    payload = {"results": [{
+        "title": "AI Inference Engineer Intern", "shortcode": "ABC123",
+        "published": "2026-06-10T00:00:00Z", "remote": False,
+        "location": {"country": "United States", "city": "Burlingame", "region": "California"},
+    }], "nextPage": None}
+    jobs = _run(workable.fetch({"name": "Quadric", "slug": "quadric"}, FakeNet(payload)))
+    assert jobs[0].id == "workable:quadric:ABC123"
+    assert jobs[0].url == "https://apply.workable.com/quadric/j/ABC123/"
+    assert jobs[0].location == "Burlingame, California, United States"
+    assert jobs[0].posted_at == "2026-06-10T00:00:00Z"
+
+
+def test_breezy():
+    payload = [{
+        "id": "fa06", "name": "SWE Intern", "url": "https://acme.breezy.hr/p/fa06-swe",
+        "published_date": "2026-06-15T16:41:15.395Z",
+        "location": {"name": "Provo, UT"}, "salary": "$25/hr",
+    }]
+    jobs = _run(breezy.fetch({"name": "Acme", "slug": "acme"}, FakeNet(payload)))
+    assert jobs[0].id == "breezy:acme:fa06"
+    assert jobs[0].location == "Provo, UT"
+    assert jobs[0].salary == "$25/hr"
+    assert jobs[0].posted_at.startswith("2026-06-15")
+
+
+def test_recruitee():
+    payload = {"offers": [{
+        "id": 99, "title": "Data Intern", "city": "Amsterdam", "country": "Netherlands",
+        "careers_url": "https://acme.recruitee.com/o/data-intern",
+        "created_at": "2026-06-01", "description": "<p>No visa sponsorship.</p>",
+    }]}
+    jobs = _run(recruitee.fetch({"name": "Acme", "slug": "acme"}, FakeNet(payload)))
+    assert jobs[0].id == "recruitee:acme:99"
+    assert jobs[0].location == "Amsterdam, Netherlands"
+    assert "sponsorship" in jobs[0].description
 
 
 def test_oracle():

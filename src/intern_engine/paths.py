@@ -18,7 +18,11 @@ COMPANIES_PATH = os.path.join(DATA_DIR, "companies.json")    # validated compani
 JOBS_PATH = os.path.join(DATA_DIR, "jobs.json")              # persistent job state
 CSV_PATH = os.path.join(DATA_DIR, "internships.csv")         # downloadable tracker
 STATS_PATH = os.path.join(DATA_DIR, "stats.json")            # last-run metrics
+HEALTH_PATH = os.path.join(DATA_DIR, "health.json")          # circuit-breaker state
+HISTORY_PATH = os.path.join(DATA_DIR, "history.jsonl")       # one line of metrics per run
 
 README_PATH = os.path.join(ROOT, "README.md")
 DOCS_DIR = os.path.join(ROOT, "docs")
 DASHBOARD_PATH = os.path.join(DOCS_DIR, "index.html")        # GitHub Pages dashboard
+FEED_PATH = os.path.join(DOCS_DIR, "feed.xml")               # Atom feed (new roles)
+API_DIR = os.path.join(DOCS_DIR, "api")                      # static JSON API

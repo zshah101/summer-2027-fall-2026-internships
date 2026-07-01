@@ -13,6 +13,8 @@ Change behavior without touching code:
 from __future__ import annotations
 
 import json
+import os
+import re
 
 from . import paths
 
@@ -22,6 +24,29 @@ DEFAULTS = {
     "regions": ["US"],
     "role_scope": "tech",
 }
+
+_FALLBACK_REPO = "zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships"
+
+
+def repo_slug() -> str:
+    """"owner/name" for this repo: from Actions env, else the git remote."""
+    env = os.environ.get("GITHUB_REPOSITORY")
+    if env and "/" in env:
+        return env
+    try:
+        with open(os.path.join(paths.ROOT, ".git", "config"), encoding="utf-8") as f:
+            m = re.search(r"github\.com[:/]([\w.-]+/[\w.-]+?)(?:\.git)?\s", f.read())
+            if m:
+                return m.group(1)
+    except OSError:
+        pass
+    return _FALLBACK_REPO
+
+
+def pages_base() -> str:
+    """The GitHub Pages base URL serving docs/ (dashboard, feed, JSON API)."""
+    owner, _, name = repo_slug().partition("/")
+    return f"https://{owner.lower()}.github.io/{name}"
 
 _GLOBAL_TOKENS = {"global", "international", "worldwide", "any", "all"}
 _US_TOKENS = {"us", "usa", "united states", "u.s.", "america"}

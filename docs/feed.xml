@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/feed.xml</id>
+  <title>Summer 2027 Tech Internships — new roles</title>
+  <subtitle>Auto-detected internships, newest finds first.</subtitle>
+  <link href="https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/feed.xml" rel="self"/>
+  <link href="https://github.com/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships"/>
+  <updated>2026-07-01T20:55:33Z</updated>
+  <entry>
+    <id>urn:intern-engine:workday:abb:/job/USA-NC-Cary/AI---Data-Scientist-AI-Intern---Fall-2026_JR00036225</id>
+    <title>ABB: AI &amp; Data Scientist  Intern - Fall 2026 🛂</title>
+    <link href="https://abb.wd3.myworkdayjobs.com/external_career_page/job/USA-NC-Cary/AI---Data-Scientist-AI-Intern---Fall-2026_JR00036225"/>
+    <updated>2026-07-01T20:55:33Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · USA, NC, Cary · sponsorship: no-sponsorship</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:imc:4907430101</id>
+    <title>IMC Trading: Machine Learning Research Intern - Summer 2027</title>
+    <link href="https://job-boards.eu.greenhouse.io/imc/jobs/4907430101"/>
+    <updated>2026-07-01T20:55:33Z</updated>
+    <category term="Summer 2027"/>
+    <summary>Summer 2027 · Data &amp; ML/AI · Chicago, United States</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:imc:4823924101</id>
+    <title>IMC Trading: Software Engineer Intern - Summer 2027</title>
+    <link href="https://job-boards.eu.greenhouse.io/imc/jobs/4823924101"/>
+    <updated>2026-07-01T20:55:33Z</updated>
+    <category term="Summer 2027"/>
+    <summary>Summer 2027 · Software · Chicago, United States</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:workday:omers:/job/New-York-New-York/Student--AI-Enablement---Adoption-Specialist--Fall-2026--4-Months----New-York_JR-8159</id>
+    <title>OMERS: Intern, AI Enablement &amp; Adoption Specialist (Fall 2026, 4 Months) - New York</title>
+    <link href="https://omers.wd3.myworkdayjobs.com/omers_external/job/New-York-New-York/Student--AI-Enablement---Adoption-Specialist--Fall-2026--4-Months----New-York_JR-8159"/>
+    <updated>2026-07-01T20:55:33Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · New York, New York</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:workable:tmeic-corporation-americas:FD4C9770FF</id>
+    <title>TMEIC: Intern - Applications, AI and Machine Learning (Fall 2026) (ET26021) 🛂</title>
+    <link href="https://apply.workable.com/tmeic-corporation-americas/j/FD4C9770FF/"/>
+    <updated>2026-07-01T20:55:33Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · Roanoke, Virginia, United States · sponsorship: no-sponsorship</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:workday:dmainc:/job/Fort-Wayne-IN/Software-Development-Intern_REQ460</id>
+    <title>Dmainc: Software Development Intern - Fall 2026</title>
+    <link href="https://dmainc.wd5.myworkdayjobs.com/dma/job/Fort-Wayne-IN/Software-Development-Intern_REQ460"/>
+    <updated>2026-07-01T20:55:33Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · Fort Wayne, IN</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:workday:lego:/job/Boston-Hub/Firmware-Engineering-Intern_0000031568</id>
+    <title>Lego: Firmware Engineering Co-Op - Fall 2026</title>
+    <link href="https://lego.wd103.myworkdayjobs.com/lego_executive/job/Boston-Hub/Firmware-Engineering-Intern_0000031568"/>
+    <updated>2026-07-01T20:55:33Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Hardware · United States of America</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:workday:motorolasolutions:/job/Los-Angeles-CA/Intern---Web-Interface-Software-Engineer--2026-_R64590</id>
+    <title>Motorola: Intern – Web Interface Software Engineer (2026) 🇺🇸</title>
+    <link href="https://motorolasolutions.wd5.myworkdayjobs.com/Careers/job/Los-Angeles-CA/Intern---Web-Interface-Software-Engineer--2026-_R64590"/>
+    <updated>2026-07-01T20:55:33Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · Los Angeles, CA · sponsorship: citizens-only</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:workday:motorolasolutions:/job/Irvine-CA/Intern---Embedded-Software--System--and-Test-Engineer---2026_R62372</id>
+    <title>Motorola: Intern - Embedded Software, System, and Test Engineer - 2026 🇺🇸</title>
+    <link href="https://motorolasolutions.wd5.myworkdayjobs.com/Careers/job/Irvine-CA/Intern---Embedded-Software--System--and-Test-Engineer---2026_R62372"/>
+    <updated>2026-07-01T20:55:33Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · Irvine, CA · sponsorship: citizens-only</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:workday:vrtx:/job/Boston-MA/Vertex-Fall-Co-op-2026--AI-and-Governance_REQ-28615-1</id>
+    <title>Vertex Pharmaceuticals: Vertex Fall Co-op 2026, AI and Governance 🛂</title>
+    <link href="https://vrtx.wd501.myworkdayjobs.com/vertex_careers/job/Boston-MA/Vertex-Fall-Co-op-2026--AI-and-Governance_REQ-28615-1"/>
+    <updated>2026-07-01T20:55:33Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · Boston, MA · sponsorship: no-sponsorship</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:workday:caci:/job/King-of-Prussia-PA-US/AI-ML-Engineering-Co-op---Fall-2026_328403</id>
+    <title>CACI: AI/ML Engineering Co-op - Fall 2026 🇺🇸</title>
+    <link href="https://caci.wd1.myworkdayjobs.com/external/job/King-of-Prussia-PA-US/AI-ML-Engineering-Co-op---Fall-2026_328403"/>
+    <updated>2026-06-30T19:33:09Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · King of Prussia, PA, US · sponsorship: citizens-only</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:amazon:amazon:10412530</id>
+    <title>Amazon: Software Development Engineer Intern, AWS Data Services - Fall 2026 (US)</title>
+    <link href="https://www.amazon.jobs/en/jobs/10412530/software-development-engineer-intern-aws-data-services-fall-2026-us"/>
+    <updated>2026-06-30T17:50:48Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · Seattle, Washington, USA</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:amazon:amazon:3104589</id>
+    <title>Amazon: Robotics - Applied Scientist II Intern / Co-op - 2026 (Robotics, Manipulation, Perception, Motion Planning, Autonomous Mobile Robots, Computer Vision, Machine Learning, Controls, and more)</title>
+    <link href="https://www.amazon.jobs/en/jobs/3104589/robotics-applied-scientist-ii-intern-co-op-2026-robotics-manipulation-perception-motion-planning-autonomous-mobile-robots-computer-vision-machine-learning-controls-and-more"/>
+    <updated>2026-06-30T17:50:48Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · North Reading, Massachusetts, USA</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:amazon:amazon:3116030</id>
+    <title>Amazon: Software Development Engineer Internship - Fall 2026 (US)</title>
+    <link href="https://www.amazon.jobs/en/jobs/3116030/software-development-engineer-internship-fall-2026-us"/>
+    <updated>2026-06-30T17:50:48Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · Seattle, Washington, USA</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:amazon:amazon:3132414</id>
+    <title>Amazon: Amazon Industrial Robotics - Applied Scientist II Intern / Co-op - 2026, Amazon Industrial Robotics</title>
+    <link href="https://www.amazon.jobs/en/jobs/3132414/amazon-industrial-robotics-applied-scientist-ii-intern-co-op-2026-amazon-industrial-robotics"/>
+    <updated>2026-06-30T17:50:48Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · North Reading, Massachusetts, USA</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:amazon:amazon:3136266</id>
+    <title>Amazon: Robotics - Software Development Engineer Intern/Co-op - 2026</title>
+    <link href="https://www.amazon.jobs/en/jobs/3136266/robotics-software-development-engineer-intern-co-op-2026"/>
+    <updated>2026-06-30T17:50:48Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Hardware · Westboro, Wisconsin, USA</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:workday:td:/job/Mount-Laurel-New-Jersey/XMLNAME-2026-Fall-Co-op---Global-Technology---Solutions---Cyber-Security_R_1495397</id>
+    <title>TD Bank: 2026 Fall Co-op - Global Technology Solutions - Cyber Security</title>
+    <link href="https://td.wd3.myworkdayjobs.com/TD_Bank_Careers/job/Mount-Laurel-New-Jersey/XMLNAME-2026-Fall-Co-op---Global-Technology---Solutions---Cyber-Security_R_1495397"/>
+    <updated>2026-06-30T12:43:37Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Security · Mount Laurel, New Jersey</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:workday:td:/job/Mount-Laurel-New-Jersey/XMLNAME-2026-Fall-Co-op---Global-Technology-Solutions---Data-Engineer_R_1495653</id>
+    <title>TD Bank: 2026 Fall Co-op - Global Technology Solutions - Data Engineer</title>
+    <link href="https://td.wd3.myworkdayjobs.com/TD_Bank_Careers/job/Mount-Laurel-New-Jersey/XMLNAME-2026-Fall-Co-op---Global-Technology-Solutions---Data-Engineer_R_1495653"/>
+    <updated>2026-06-30T12:43:37Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · Mount Laurel, New Jersey</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:workday:td:/job/Mount-Laurel-New-Jersey/XMLNAME-2026-Fall-Co-op---Global-Technology-Solutions---Software-Engineer--SWE-_R_1495659</id>
+    <title>TD Bank: 2026 Fall Co-op - Global Technology Solutions - Software Engineer (SWE)</title>
+    <link href="https://td.wd3.myworkdayjobs.com/TD_Bank_Careers/job/Mount-Laurel-New-Jersey/XMLNAME-2026-Fall-Co-op---Global-Technology-Solutions---Software-Engineer--SWE-_R_1495659"/>
+    <updated>2026-06-30T12:43:37Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · Mount Laurel, New Jersey</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:andurilindustries:5148079007</id>
+    <title>Anduril: 2027 Software Engineer Intern 🇺🇸</title>
+    <link href="https://boards.greenhouse.io/andurilindustries/jobs/5148079007?gh_jid=5148079007"/>
+    <updated>2026-06-30T12:22:43Z</updated>
+    <category term="Summer 2027"/>
+    <summary>Summer 2027 · Software · Atlanta, Georgia, United States; Boston, Massachusetts, United States; Costa Mesa, California, United States; Irvine, California, United States; Reston, Virginia, United States; Seattle, Washington, United States · sponsorship: citizens-only</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:workday:nvidia:/job/US-CA-Remote/Quantum-Error-Correction-Research-Scientist-Intern---Fall-2026_JR2018628</id>
+    <title>NVIDIA: Quantum Error Correction Research Scientist Intern - Fall 2026</title>
+    <link href="https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Remote/Quantum-Error-Correction-Research-Scientist-Intern---Fall-2026_JR2018628"/>
+    <updated>2026-06-30T12:22:43Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · US, CA, Remote</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:workday:nvidia:/job/US-CA-Remote/Quantum-Research-Scientist-Intern---Fall-2026_JR2018244</id>
+    <title>NVIDIA: Quantum Research Scientist Intern - Fall 2026</title>
+    <link href="https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Remote/Quantum-Research-Scientist-Intern---Fall-2026_JR2018244"/>
+    <updated>2026-06-30T12:22:43Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · US, CA, Remote</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:workday:nvidia:/job/US-CA-Santa-Clara/Software-Engineering-Intern--JAX---Fall-2026_JR2009745</id>
+    <title>NVIDIA: Software Engineering Intern, JAX - Fall 2026</title>
+    <link href="https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Software-Engineering-Intern--JAX---Fall-2026_JR2009745"/>
+    <updated>2026-06-30T12:22:43Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · US, CA, Santa Clara</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:ashby:1password:8f8774dc-e400-48b1-8100-c6840b8eaed1</id>
+    <title>1Password: Developer Intern, Trust Platforms - Fall 2026</title>
+    <link href="https://jobs.ashbyhq.com/1password/8f8774dc-e400-48b1-8100-c6840b8eaed1"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · Remote (United States | Canada)</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:ashby:1password:b6b8c8ed-ff1c-4bc2-9dbe-5122207ea3a2</id>
+    <title>1Password: Developer Intern, Service Development - Fall 2026</title>
+    <link href="https://jobs.ashbyhq.com/1password/b6b8c8ed-ff1c-4bc2-9dbe-5122207ea3a2"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · Remote (United States | Canada)</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:ashby:ellipsislabs:02136b22-35b1-4b3d-8bef-567c3380a849</id>
+    <title>Ellipsis Labs: Software Engineer - 2027 Interns</title>
+    <link href="https://jobs.ashbyhq.com/ellipsislabs/02136b22-35b1-4b3d-8bef-567c3380a849"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Summer 2027"/>
+    <summary>Summer 2027 · Software · New York, New York · $10K per month</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:ashby:notion:5b15697c-fa91-4511-9482-c98a6ff29f90</id>
+    <title>Notion: Software Engineer Intern (Fall 2026)</title>
+    <link href="https://jobs.ashbyhq.com/notion/5b15697c-fa91-4511-9482-c98a6ff29f90"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · San Francisco, California</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:ashby:saronic:1c74957f-0895-415b-9324-08b0994747d7</id>
+    <title>Saronic: Software Engineer Intern (Fall 2026) 🇺🇸</title>
+    <link href="https://jobs.ashbyhq.com/saronic/1c74957f-0895-415b-9324-08b0994747d7"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · Austin, TX · sponsorship: citizens-only</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:ashby:skydio:7d9dbb60-4ca1-4ba8-8bae-5ebfded4a915</id>
+    <title>Skydio: Middleware Software Engineer Intern - Fall 2026</title>
+    <link href="https://jobs.ashbyhq.com/skydio/7d9dbb60-4ca1-4ba8-8bae-5ebfded4a915"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · San Mateo, California, United States</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:ashby:skydio:f6320e9b-4eed-408d-8d37-d509fb0406ee</id>
+    <title>Skydio: Software Engineer Intern Fall 2026/Winter 2027</title>
+    <link href="https://jobs.ashbyhq.com/skydio/f6320e9b-4eed-408d-8d37-d509fb0406ee"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · San Mateo, California, United States</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:astranis:4681183006</id>
+    <title>Astranis: Software Engineer- Backend Intern (Fall 2026) 🇺🇸</title>
+    <link href="https://job-boards.greenhouse.io/astranis/jobs/4681183006"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · San Francisco, CA · sponsorship: citizens-only</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:figureai:4691070006</id>
+    <title>Figure: Firmware Intern [Fall 2026]</title>
+    <link href="https://job-boards.greenhouse.io/figureai/jobs/4691070006"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Hardware · San Jose, CA</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:gemini:7875125</id>
+    <title>Gemini: Software Engineering Intern (Fall 2026)</title>
+    <link href="https://boards.greenhouse.io/embed/job_app?for=gemini&amp;token=7875125&amp;gh_jid=7875125"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · New York, New York</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:rocketlab:7736776003</id>
+    <title>Rocket Lab: Software Intern Fall 2026 🇺🇸</title>
+    <link href="https://job-boards.greenhouse.io/rocketlab/jobs/7736776003"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · Albuquerque, NM · sponsorship: citizens-only</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:samsungresearchamericainternship:8541339002</id>
+    <title>Samsung Research America: 2026 Fall Intern, ML/NLP Research</title>
+    <link href="https://job-boards.greenhouse.io/samsungresearchamericainternship/jobs/8541339002"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · 665 Clyde Avenue, Mountain View,  CA, USA</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:samsungresearchamericainternship:8560657002</id>
+    <title>Samsung Research America: 2026 Fall Intern, Computer Vision/AI</title>
+    <link href="https://job-boards.greenhouse.io/samsungresearchamericainternship/jobs/8560657002"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · 665 Clyde Avenue, Mountain View,  CA, USA</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:sharkninjaoperatingllc:4669676006</id>
+    <title>SharkNinja: Fall 2026: SharkByte Applied AI &amp; Analytics Co-op (July to December)</title>
+    <link href="https://job-boards.greenhouse.io/sharkninjaoperatingllc/jobs/4669676006"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · Miami, Florida, United States; Needham, MA, United States</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:vardaspace:7676465003</id>
+    <title>Varda Space: Flight Software Internship - Fall 2026 🇺🇸</title>
+    <link href="https://job-boards.greenhouse.io/vardaspace/jobs/7676465003"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · El Segundo, California, United States · sponsorship: citizens-only</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:verkada:5099422007</id>
+    <title>Verkada: Backend Software Engineering Intern - Fall 2026</title>
+    <link href="https://job-boards.greenhouse.io/verkada/jobs/5099422007"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · San Mateo, CA United States · sponsorship: offers</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:walleyecapital-external-students:4676587006</id>
+    <title>Walleye Capital: Investment Data Science Intern (Summer 2027)</title>
+    <link href="https://job-boards.greenhouse.io/walleyecapital-external-students/jobs/4676587006"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Summer 2027"/>
+    <summary>Summer 2027 · Data &amp; ML/AI · New York, New York</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:walleyecapital-external-students:4679168006</id>
+    <title>Walleye Capital: Quantic – Quantitative Developer Intern (Summer 2027)</title>
+    <link href="https://job-boards.greenhouse.io/walleyecapital-external-students/jobs/4679168006"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Summer 2027"/>
+    <summary>Summer 2027 · Quant · Boston, MA</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:greenhouse:walleyecapital-external-students:4679434006</id>
+    <title>Walleye Capital: Volatility Trading Developer Intern (Summer 2027)</title>
+    <link href="https://job-boards.greenhouse.io/walleyecapital-external-students/jobs/4679434006"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Summer 2027"/>
+    <summary>Summer 2027 · Quant · New York, New York</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:lever:aisafety:e011814b-9a80-43d6-bb0c-cc153ea4bec4</id>
+    <title>Center for AI Safety: Research Engineer Intern (Fall 2026)</title>
+    <link href="https://jobs.lever.co/aisafety/e011814b-9a80-43d6-bb0c-cc153ea4bec4"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · San Francisco, CA · 9,700–19,000 USD / per year salary</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:lever:hermeus:10d69ef6-a754-42ab-833c-76adf01367bf</id>
+    <title>Hermeus: Software Engineering Intern (HIL) - Fall 2026 🇺🇸</title>
+    <link href="https://jobs.lever.co/hermeus/10d69ef6-a754-42ab-833c-76adf01367bf"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · Atlanta, GA · 25–33 USD / per hour wage · sponsorship: citizens-only</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:lever:hermeus:49f7cf3f-bf66-44ca-bf97-ee0f7180a68d</id>
+    <title>Hermeus: Software Engineering Intern (Modeling &amp; Simulation) - Fall 2026 🇺🇸</title>
+    <link href="https://jobs.lever.co/hermeus/49f7cf3f-bf66-44ca-bf97-ee0f7180a68d"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · Los Angeles, CA · 25–33 USD / per hour wage · sponsorship: citizens-only</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:lever:hermeus:51378fa0-0327-45fd-9420-b6e7d8b56440</id>
+    <title>Hermeus: Flight Software Engineering Intern - Fall 2026 🇺🇸</title>
+    <link href="https://jobs.lever.co/hermeus/51378fa0-0327-45fd-9420-b6e7d8b56440"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · Atlanta, GA · 25–33 USD / per hour wage · sponsorship: citizens-only</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:lever:hermeus:a3a1f0ea-6a4f-42e5-81c8-3b34dac22a67</id>
+    <title>Hermeus: Software Engineering Intern (HMI) - Fall 2026 🇺🇸</title>
+    <link href="https://jobs.lever.co/hermeus/a3a1f0ea-6a4f-42e5-81c8-3b34dac22a67"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · Atlanta, GA · 25–33 USD / per hour wage · sponsorship: citizens-only</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:lever:solopulseco:00fbde18-a387-4c9f-97d4-77059aec7b56</id>
+    <title>SoloPulse: Software Engineer Intern/Co-Op - Fall 2026</title>
+    <link href="https://jobs.lever.co/solopulseco/00fbde18-a387-4c9f-97d4-77059aec7b56"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Software · Peachtree Corners, GA</summary>
+  </entry>
+  <entry>
+    <id>urn:intern-engine:smartrecruiters:Intuitive:744000133458290</id>
+    <title>Intuitive Surgical: Computer Vision Engineering Intern - Fall 2026</title>
+    <link href="https://jobs.smartrecruiters.com/Intuitive/744000133458290"/>
+    <updated>2026-06-30T12:14:22Z</updated>
+    <category term="Fall 2026"/>
+    <summary>Fall 2026 · Data &amp; ML/AI · Sunnyvale, CA, United States</summary>
+  </entry>
+</feed>

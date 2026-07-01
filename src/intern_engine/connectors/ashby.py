@@ -1,11 +1,24 @@
-"""Ashby job board API: public, no auth."""
+"""Ashby job board API: public, no auth.
+
+`includeCompensation=true` adds pay tiers, and each posting ships its full
+description — so salary and sponsorship classification are free for Ashby.
+"""
 
 from __future__ import annotations
 
 from ..models import Job
 from ..net import Net
 
-URL = "https://api.ashbyhq.com/posting-api/job-board/{slug}"
+URL = "https://api.ashbyhq.com/posting-api/job-board/{slug}?includeCompensation=true"
+
+
+def _salary(posting: dict) -> str | None:
+    comp = posting.get("compensation")
+    if isinstance(comp, dict):
+        summary = comp.get("compensationTierSummary") or comp.get("scrapeableCompensationSalarySummary")
+        if summary:
+            return str(summary).strip()
+    return None
 
 
 async def fetch(company: dict, net: Net) -> list[Job]:
@@ -28,6 +41,8 @@ async def fetch(company: dict, net: Net) -> list[Job]:
                 location=(posting.get("location") or "—").strip() or "—",
                 url=job_url,
                 posted_at=posting.get("publishedAt"),
+                salary=_salary(posting),
+                description=posting.get("descriptionPlain") or posting.get("descriptionHtml"),
             )
         )
     return jobs

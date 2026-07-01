@@ -1,7 +1,8 @@
 """Oracle Recruiting Cloud (enterprise + bank tenants).
 
 Per-tenant like Workday: each company has its own oraclecloud.com host and a
-site number (usually CX_1). Public REST endpoint, browser-like headers.
+site number (CX_1, CX_2001, ... — captured by discovery, not assumed). Public
+REST endpoint, browser-like headers, paginated by offset.
 """
 
 from __future__ import annotations
@@ -14,6 +15,9 @@ HEADERS = {
                   "(KHTML, like Gecko) Chrome/120.0 Safari/537.36",
     "Accept": "application/json",
 }
+
+_PAGE_SIZE = 50
+_MAX_JOBS = 100
 
 
 def _posted(value) -> str | None:
@@ -28,31 +32,33 @@ async def fetch(company: dict, net: Net) -> list[Job]:
     site = company.get("site", "CX_1")
     tenant = company["slug"]
     url = f"https://{host}/hcmRestApi/resources/latest/recruitingCEJobRequisitions"
-    params = {
-        "onlyData": "true",
-        "expand": "requisitionList.secondaryLocations",
-        "finder": f"findReqs;siteNumber={site},keyword=intern,sortBy=POSTING_DATES_DESC",
-        "limit": "50",
-    }
-    data = await net.get_json(url, params=params, headers=HEADERS)
-
-    items = data.get("items") or []
-    requisitions = items[0].get("requisitionList", []) if items else []
     base = f"https://{host}/hcmUI/CandidateExperience/en/sites/{site}/job"
 
     jobs: list[Job] = []
-    for r in requisitions:
-        rid = r.get("Id")
-        jobs.append(
-            Job(
-                id=f"oracle:{tenant}:{rid}",
-                source="oracle",
-                company=company["name"],
-                company_slug=tenant,
-                title=(r.get("Title") or "").strip(),
-                location=(r.get("PrimaryLocation") or "—").strip() or "—",
-                url=f"{base}/{rid}",
-                posted_at=_posted(r.get("PostedDate")),
+    for offset in range(0, _MAX_JOBS, _PAGE_SIZE):
+        params = {
+            "onlyData": "true",
+            "expand": "requisitionList.secondaryLocations",
+            "finder": f"findReqs;siteNumber={site},keyword=intern,sortBy=POSTING_DATES_DESC,offset={offset}",
+            "limit": str(_PAGE_SIZE),
+        }
+        data = await net.get_json(url, params=params, headers=HEADERS)
+        items = data.get("items") or []
+        requisitions = items[0].get("requisitionList", []) if items else []
+        for r in requisitions:
+            rid = r.get("Id")
+            jobs.append(
+                Job(
+                    id=f"oracle:{tenant}:{rid}",
+                    source="oracle",
+                    company=company["name"],
+                    company_slug=tenant,
+                    title=(r.get("Title") or "").strip(),
+                    location=(r.get("PrimaryLocation") or "—").strip() or "—",
+                    url=f"{base}/{rid}",
+                    posted_at=_posted(r.get("PostedDate")),
+                )
             )
-        )
+        if len(requisitions) < _PAGE_SIZE:
+            break
     return jobs
