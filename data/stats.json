@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-01T09:55:30Z",
-  "duration_seconds": 90.0,
+  "generated_at": "2026-07-01T12:36:33Z",
+  "duration_seconds": 31.4,
   "companies_total": 2078,
   "companies_by_source": {
     "greenhouse": 935,
@@ -12,9 +12,9 @@
     "oracle": 20,
     "amazon": 1
   },
-  "fetched_ok": 1969,
-  "fetch_errors": 109,
-  "fetch_success_rate": 0.948,
+  "fetched_ok": 1968,
+  "fetch_errors": 110,
+  "fetch_success_rate": 0.947,
   "roles_matched": 41,
   "roles_by_source": {
     "ashby": 7,
