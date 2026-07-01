@@ -10,6 +10,7 @@ from __future__ import annotations
 import csv
 import json
 from datetime import UTC, datetime, timedelta
+from urllib.parse import quote
 
 from . import config, filters, paths, priority, sponsorship
 
@@ -123,6 +124,16 @@ def _company_count() -> int:
         return 0
 
 
+def _raw_feed_url() -> str:
+    """The feed served straight from the repo (no Pages dependency)."""
+    return f"https://raw.githubusercontent.com/{config.repo_slug()}/main/docs/feed.xml"
+
+
+def _email_subscribe_url() -> str:
+    """One-click feed-to-email signup, prefilled with our feed."""
+    return f"https://feedrabbit.com/subscriptions/new?url={quote(_raw_feed_url(), safe='')}"
+
+
 def _header(cfg: dict, total_open: int, companies: int, new_week: int) -> list[str]:
     region = _region_label(cfg)
     cycles = config.cycles(cfg)
@@ -144,6 +155,12 @@ def _header(cfg: dict, total_open: int, companies: int, new_week: int) -> list[s
         "",
         f"**Live:** [dashboard]({pages}/) · [RSS feed]({pages}/feed.xml) "
         f"(instant alerts in any RSS app) · [JSON API]({pages}/api/jobs.json)",
+        "",
+        # The raw URL serves the feed straight from the repo, so email
+        # subscriptions keep working even if GitHub Pages is off.
+        f"**🔔 New roles in your inbox:** [subscribe by email]({_email_subscribe_url()}) "
+        "(free, one click) - every new internship lands in your email the same day "
+        "the engine spots it. No app needed.",
         "",
         "## What this is",
         "",

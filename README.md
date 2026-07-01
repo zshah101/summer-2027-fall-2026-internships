@@ -2,11 +2,13 @@
 
 A self-updating engine that tracks tech internships so you don't have to. Instead of refreshing a dozen career pages by hand, it reads company hiring feeds directly and keeps one live list, newest roles on top, refreshed automatically throughout the day.
 
-**46 open roles · 49 new this week · 3,541 companies tracked · updated Jul 01, 2026 at 20:55 UTC**
+**46 open roles · 49 new this week · 3,541 companies tracked · updated Jul 01, 2026 at 21:15 UTC**
 
 **⭐Star this repo⭐** to save it and get updates when new roles are added.
 
 **Live:** [dashboard](https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/) · [RSS feed](https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/feed.xml) (instant alerts in any RSS app) · [JSON API](https://zshah101.github.io/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships/api/jobs.json)
+
+**🔔 New roles in your inbox:** [subscribe by email](https://feedrabbit.com/subscriptions/new?url=https%3A%2F%2Fraw.githubusercontent.com%2Fzshah101%2FAutomated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships%2Fmain%2Fdocs%2Ffeed.xml) (free, one click) - every new internship lands in your email the same day the engine spots it. No app needed.
 
 ## What this is
 
@@ -40,8 +42,8 @@ I'm building this in the open and adding to it as it grows. Coming soon: **SMS/e
 
 | Company | Role | Category | Location | Posted | Apply |
 |---|---|---|---|---|---|
-| IMC Trading | Machine Learning Research Intern - Summer 2027 🆕 | Data & ML/AI | Chicago, United States | Jul 01, 2026 | [Apply](https://job-boards.eu.greenhouse.io/imc/jobs/4907430101) |
 | IMC Trading | Software Engineer Intern - Summer 2027 🆕 | Software | Chicago, United States | Jul 01, 2026 | [Apply](https://job-boards.eu.greenhouse.io/imc/jobs/4823924101) |
+| IMC Trading | Machine Learning Research Intern - Summer 2027 🆕 | Data & ML/AI | Chicago, United States | Jul 01, 2026 | [Apply](https://job-boards.eu.greenhouse.io/imc/jobs/4907430101) |
 | Anduril | 2027 Software Engineer Intern 🇺🇸 🆕 | Software | Atlanta +17 more | Jun 10, 2026 | [Apply](https://boards.greenhouse.io/andurilindustries/jobs/5148079007?gh_jid=5148079007) |
 | Walleye Capital | Investment Data Science Intern (Summer 2027) 🆕 | Data & ML/AI | New York, New York | Jun 01, 2026 | [Apply](https://job-boards.greenhouse.io/walleyecapital-external-students/jobs/4676587006) |
 | Walleye Capital | Quantic – Quantitative Developer Intern (Summer 2027) 🆕 | Quant | Boston, MA | Jun 01, 2026 | [Apply](https://job-boards.greenhouse.io/walleyecapital-external-students/jobs/4679168006) |
