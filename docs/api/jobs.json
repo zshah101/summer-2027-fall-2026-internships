@@ -1,9 +1,24 @@
 {
- "generated_at": "2026-07-02T21:14:51Z",
+ "generated_at": "2026-07-02T23:15:03Z",
  "source": "https://github.com/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships",
  "h1b_window": "FY2022–2023",
- "count": 47,
+ "count": 48,
  "jobs": [
+  {
+   "id": "ashby:saronic:c95c2e3a-4c67-47b0-a03d-0e0317ac11a3",
+   "company": "Saronic",
+   "title": "Enterprise Technology Intern - AI and Automation (Fall 2026)",
+   "season": "Fall 2026",
+   "category": "Data & ML/AI",
+   "location": "Austin, TX",
+   "url": "https://jobs.ashbyhq.com/saronic/c95c2e3a-4c67-47b0-a03d-0e0317ac11a3",
+   "posted_at": "2026-07-02T22:10:18.840+00:00",
+   "first_seen_at": "2026-07-02T23:15:03Z",
+   "sponsorship": "citizens-only",
+   "salary": null,
+   "source": "ashby",
+   "h1b_approvals": null
+  },
   {
    "id": "workday:nvidia:/job/US-CA-Santa-Clara/Applied-Research-Intern--NLP---Fall-2026_JR2010488",
    "company": "NVIDIA",
