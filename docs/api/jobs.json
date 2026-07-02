@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-07-02T14:13:20Z",
+ "generated_at": "2026-07-02T17:55:48Z",
  "source": "https://github.com/zshah101/Automated-List-Of-Summer-2027-and-Fall-2026-Tech-Internships",
- "count": 49,
+ "count": 48,
  "jobs": [
   {
    "id": "workday:nvidia:/job/US-CA-Santa-Clara/Applied-Research-Intern--NLP---Fall-2026_JR2010488",
@@ -156,20 +156,6 @@
    "sponsorship": "unknown",
    "salary": null,
    "source": "lever"
-  },
-  {
-   "id": "workday:omers:/job/New-York-New-York/Student--AI-Enablement---Adoption-Specialist--Fall-2026--4-Months----New-York_JR-8159",
-   "company": "OMERS",
-   "title": "Intern, AI Enablement & Adoption Specialist (Fall 2026, 4 Months) - New York",
-   "season": "Fall 2026",
-   "category": "Data & ML/AI",
-   "location": "New York, New York",
-   "url": "https://omers.wd3.myworkdayjobs.com/omers_external/job/New-York-New-York/Student--AI-Enablement---Adoption-Specialist--Fall-2026--4-Months----New-York_JR-8159",
-   "posted_at": "2026-06-12T00:00:00Z",
-   "first_seen_at": "2026-07-01T20:55:33Z",
-   "sponsorship": "unknown",
-   "salary": null,
-   "source": "workday"
   },
   {
    "id": "greenhouse:andurilindustries:5148079007",
