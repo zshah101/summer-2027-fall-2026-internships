@@ -3616,6 +3616,11 @@
     "ats": "ashby"
   },
   {
+    "name": "Canva",
+    "slug": "canva",
+    "ats": "smartrecruiters"
+  },
+  {
     "name": "Canvas Worldwide",
     "slug": "canvasww",
     "ats": "lever"
@@ -3892,6 +3897,11 @@
     "ats": "workday",
     "wd": "wd3",
     "site": "careers"
+  },
+  {
+    "name": "Census",
+    "slug": "census",
+    "ats": "breezy"
   },
   {
     "name": "Censys",
@@ -5769,6 +5779,11 @@
     "wd": "wd5",
     "site": "Careers",
     "host": "wd5.myworkdaysite.com"
+  },
+  {
+    "name": "Devoted Health",
+    "slug": "devotedhealth",
+    "ats": "smartrecruiters"
   },
   {
     "name": "DevRev",
@@ -8180,6 +8195,11 @@
     "ats": "greenhouse"
   },
   {
+    "name": "Glean",
+    "slug": "glean",
+    "ats": "smartrecruiters"
+  },
+  {
     "name": "Glencore",
     "slug": "glencorecorp",
     "ats": "workday",
@@ -8306,6 +8326,11 @@
     "name": "GoMaterials",
     "slug": "gomaterials",
     "ats": "lever"
+  },
+  {
+    "name": "Gong",
+    "slug": "gong",
+    "ats": "smartrecruiters"
   },
   {
     "name": "Good American",
@@ -13723,6 +13748,11 @@
   {
     "name": "Optiver",
     "slug": "tradingacademy2025",
+    "ats": "greenhouse"
+  },
+  {
+    "name": "Optiver",
+    "slug": "optiverus",
     "ats": "greenhouse"
   },
   {
